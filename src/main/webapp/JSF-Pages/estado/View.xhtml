@@ -12,12 +12,12 @@
             <h:form id="EstadoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadoController.selected != null}">
-                        <h:outputText value="#{bundle.ViewEstadoLabel_idEstado}"/>
-                        <h:outputText value="#{estadoController.selected.idEstado}" title="#{bundle.ViewEstadoTitle_idEstado}"/>
+                        <h:outputText value="#{bundle.ViewEstadoLabel_idEstado}" rendered="false"/>
+                        <h:outputText value="#{estadoController.selected.idEstado}" title="#{bundle.ViewEstadoTitle_idEstado}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewEstadoLabel_estado}"/>
                         <h:outputText value="#{estadoController.selected.estado}" title="#{bundle.ViewEstadoTitle_estado}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="EstadoViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="EstadoViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

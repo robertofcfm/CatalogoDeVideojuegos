@@ -12,26 +12,34 @@
             <h:form id="VideojuegoViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{videojuegoController.selected != null}">
-                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idVideojuego}"/>
-                        <h:outputText value="#{videojuegoController.selected.idVideojuego}" title="#{bundle.ViewVideojuegoTitle_idVideojuego}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idVideojuego}" rendered="false"/>
+                        <h:outputText value="#{videojuegoController.selected.idVideojuego}" title="#{bundle.ViewVideojuegoTitle_idVideojuego}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_videojuego}"/>
                         <h:outputText value="#{videojuegoController.selected.videojuego}" title="#{bundle.ViewVideojuegoTitle_videojuego}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_sagaidSaga}"/>
+                        <h:outputText value="#{videojuegoController.selected.sagaidSaga.saga}" title="#{bundle.ViewVideojuegoTitle_sagaidSaga}"/>
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_numJugadores}"/>
                         <h:outputText value="#{videojuegoController.selected.numJugadores}" title="#{bundle.ViewVideojuegoTitle_numJugadores}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idDesarrollador}"/>
+                        <h:outputText value="#{videojuegoController.selected.idDesarrollador.division}" title="#{bundle.ViewVideojuegoTitle_idDesarrollador}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idDistribuidor}"/>
+                        <h:outputText value="#{videojuegoController.selected.idDistribuidor.division}" title="#{bundle.ViewVideojuegoTitle_idDistribuidor}"/>
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_lanzamiento}"/>
                         <h:outputText value="#{videojuegoController.selected.lanzamiento}" title="#{bundle.ViewVideojuegoTitle_lanzamiento}"/>
-                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idDistribuidor}"/>
-                        <h:outputText value="#{videojuegoController.selected.idDistribuidor}" title="#{bundle.ViewVideojuegoTitle_idDistribuidor}"/>
-                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idDesarrollador}"/>
-                        <h:outputText value="#{videojuegoController.selected.idDesarrollador}" title="#{bundle.ViewVideojuegoTitle_idDesarrollador}"/>
-                        <h:outputText value="#{bundle.ViewVideojuegoLabel_estadoidEstado}"/>
-                        <h:outputText value="#{videojuegoController.selected.estadoidEstado}" title="#{bundle.ViewVideojuegoTitle_estadoidEstado}"/>
-                        <h:outputText value="#{bundle.ViewVideojuegoLabel_sagaidSaga}"/>
-                        <h:outputText value="#{videojuegoController.selected.sagaidSaga}" title="#{bundle.ViewVideojuegoTitle_sagaidSaga}"/>
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_ubicacionidUbicacion}"/>
-                        <h:outputText value="#{videojuegoController.selected.ubicacionidUbicacion}" title="#{bundle.ViewVideojuegoTitle_ubicacionidUbicacion}"/>
+                        <h:outputText value="#{videojuegoController.selected.ubicacionidUbicacion.ubicacion}" title="#{bundle.ViewVideojuegoTitle_ubicacionidUbicacion}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_estadoidEstado}"/>
+                        <h:outputText value="#{videojuegoController.selected.estadoidEstado.estado}" title="#{bundle.ViewVideojuegoTitle_estadoidEstado}"/>
+                        <p:column>
+                            <h:outputText value="#{bundle.CreateEtiquetaLabel_etiqueta}"/>
+                        </p:column>
+                        <p:repeat value="#{videojuegoController.selected.etiquetaList}" var="etiqueta">
+                            <p:column>
+                                <h:outputText value="#{etiqueta.etiqueta}"/><br/>
+                            </p:column>
+                        </p:repeat>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="VideojuegoViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="VideojuegoViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

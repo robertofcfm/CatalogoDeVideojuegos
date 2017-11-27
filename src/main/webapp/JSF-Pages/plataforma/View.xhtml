@@ -12,14 +12,14 @@
             <h:form id="PlataformaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{plataformaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewPlataformaLabel_idPlataforma}"/>
-                        <h:outputText value="#{plataformaController.selected.idPlataforma}" title="#{bundle.ViewPlataformaTitle_idPlataforma}"/>
+                        <h:outputText value="#{bundle.ViewPlataformaLabel_idPlataforma}" rendered="false"/>
+                        <h:outputText value="#{plataformaController.selected.idPlataforma}" title="#{bundle.ViewPlataformaTitle_idPlataforma}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewPlataformaLabel_plataforma}"/>
                         <h:outputText value="#{plataformaController.selected.plataforma}" title="#{bundle.ViewPlataformaTitle_plataforma}"/>
                         <h:outputText value="#{bundle.ViewPlataformaLabel_companiaidCompania}"/>
                         <h:outputText value="#{plataformaController.selected.companiaidCompania}" title="#{bundle.ViewPlataformaTitle_companiaidCompania}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="PlataformaViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="PlataformaViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

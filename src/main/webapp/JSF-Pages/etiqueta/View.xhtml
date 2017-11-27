@@ -12,12 +12,12 @@
             <h:form id="EtiquetaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{etiquetaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewEtiquetaLabel_idEtiqueta}"/>
-                        <h:outputText value="#{etiquetaController.selected.idEtiqueta}" title="#{bundle.ViewEtiquetaTitle_idEtiqueta}"/>
+                        <h:outputText value="#{bundle.ViewEtiquetaLabel_idEtiqueta}" rendered="false"/>
+                        <h:outputText value="#{etiquetaController.selected.idEtiqueta}" title="#{bundle.ViewEtiquetaTitle_idEtiqueta}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewEtiquetaLabel_etiqueta}"/>
                         <h:outputText value="#{etiquetaController.selected.etiqueta}" title="#{bundle.ViewEtiquetaTitle_etiqueta}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="EtiquetaViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="EtiquetaViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

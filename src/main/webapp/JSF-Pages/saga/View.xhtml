@@ -12,12 +12,12 @@
             <h:form id="SagaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{sagaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewSagaLabel_idSaga}"/>
-                        <h:outputText value="#{sagaController.selected.idSaga}" title="#{bundle.ViewSagaTitle_idSaga}"/>
+                        <h:outputText value="#{bundle.ViewSagaLabel_idSaga}" rendered="false"/>
+                        <h:outputText value="#{sagaController.selected.idSaga}" title="#{bundle.ViewSagaTitle_idSaga}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewSagaLabel_saga}"/>
                         <h:outputText value="#{sagaController.selected.saga}" title="#{bundle.ViewSagaTitle_saga}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="SagaViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="SagaViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

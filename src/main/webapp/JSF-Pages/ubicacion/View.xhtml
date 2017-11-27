@@ -12,14 +12,14 @@
             <h:form id="UbicacionViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ubicacionController.selected != null}">
-                        <h:outputText value="#{bundle.ViewUbicacionLabel_idUbicacion}"/>
-                        <h:outputText value="#{ubicacionController.selected.idUbicacion}" title="#{bundle.ViewUbicacionTitle_idUbicacion}"/>
+                        <h:outputText value="#{bundle.ViewUbicacionLabel_idUbicacion}" rendered="false"/>
+                        <h:outputText value="#{ubicacionController.selected.idUbicacion}" title="#{bundle.ViewUbicacionTitle_idUbicacion}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewUbicacionLabel_ubicacion}"/>
                         <h:outputText value="#{ubicacionController.selected.ubicacion}" title="#{bundle.ViewUbicacionTitle_ubicacion}"/>
                         <h:outputText value="#{bundle.ViewUbicacionLabel_plataformaidPlataforma}"/>
                         <h:outputText value="#{ubicacionController.selected.plataformaidPlataforma}" title="#{bundle.ViewUbicacionTitle_plataformaidPlataforma}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="UbicacionViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="UbicacionViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

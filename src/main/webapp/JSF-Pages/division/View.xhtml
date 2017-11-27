@@ -12,14 +12,14 @@
             <h:form id="DivisionViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{divisionController.selected != null}">
-                        <h:outputText value="#{bundle.ViewDivisionLabel_idDivision}"/>
-                        <h:outputText value="#{divisionController.selected.idDivision}" title="#{bundle.ViewDivisionTitle_idDivision}"/>
+                        <h:outputText value="#{bundle.ViewDivisionLabel_idDivision}" rendered="false"/>
+                        <h:outputText value="#{divisionController.selected.idDivision}" title="#{bundle.ViewDivisionTitle_idDivision}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewDivisionLabel_division}"/>
                         <h:outputText value="#{divisionController.selected.division}" title="#{bundle.ViewDivisionTitle_division}"/>
                         <h:outputText value="#{bundle.ViewDivisionLabel_companiaidDivision}"/>
-                        <h:outputText value="#{divisionController.selected.companiaidDivision}" title="#{bundle.ViewDivisionTitle_companiaidDivision}"/>
+                        <h:outputText value="#{divisionController.selected.companiaidDivision.compania}" title="#{bundle.ViewDivisionTitle_companiaidDivision}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="DivisionViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="DivisionViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

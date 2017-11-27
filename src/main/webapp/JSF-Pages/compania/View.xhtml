@@ -12,12 +12,12 @@
             <h:form id="CompaniaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{companiaController.selected != null}">
-                        <h:outputText value="#{bundle.ViewCompaniaLabel_idCompania}"/>
-                        <h:outputText value="#{companiaController.selected.idCompania}" title="#{bundle.ViewCompaniaTitle_idCompania}"/>
+                        <h:outputText value="#{bundle.ViewCompaniaLabel_idCompania}" rendered="false"/>
+                        <h:outputText value="#{companiaController.selected.idCompania}" title="#{bundle.ViewCompaniaTitle_idCompania}" rendered="false"/>
                         <h:outputText value="#{bundle.ViewCompaniaLabel_compania}"/>
                         <h:outputText value="#{companiaController.selected.compania}" title="#{bundle.ViewCompaniaTitle_compania}"/>
                     </p:panelGrid>
-                    <p:commandButton value="#{bundle.Close}" onclick="CompaniaViewDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Close}" onclick="CompaniaViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
