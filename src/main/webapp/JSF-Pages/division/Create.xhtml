@@ -12,19 +12,21 @@
             <h:form id="DivisionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{divisionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateDivisionLabel_idDivision}" for="idDivision" />
-                        <p:inputText id="idDivision" value="#{divisionController.selected.idDivision}" title="#{bundle.CreateDivisionTitle_idDivision}" required="true" requiredMessage="#{bundle.CreateDivisionRequiredMessage_idDivision}"/>
+                        <p:outputLabel value="#{bundle.CreateDivisionLabel_idDivision}" for="idDivision" rendered="false"/>
+                        <p:inputText id="idDivision" value="#{divisionController.selected.idDivision}" title="#{bundle.CreateDivisionTitle_idDivision}" required="true" requiredMessage="#{bundle.CreateDivisionRequiredMessage_idDivision}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateDivisionLabel_division}" for="division" />
                         <p:inputText id="division" value="#{divisionController.selected.division}" title="#{bundle.CreateDivisionTitle_division}" required="true" requiredMessage="#{bundle.CreateDivisionRequiredMessage_division}"/>
                         <p:outputLabel value="#{bundle.CreateDivisionLabel_companiaidDivision}" for="companiaidDivision" />
                         <p:selectOneMenu id="companiaidDivision" value="#{divisionController.selected.companiaidDivision}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{companiaController.itemsAvailableSelectOne}"
                                            var="companiaidDivisionItem"
+                                           itemLabel="#{companiaidDivisionItem.compania}"
                                            itemValue="#{companiaidDivisionItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{divisionController.create}" value="#{bundle.Save}" update="display,:DivisionListForm:datalist,:growl" oncomplete="handleSubmit(args,'DivisionCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="DivisionCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DivisionCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

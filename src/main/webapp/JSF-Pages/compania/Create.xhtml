@@ -12,13 +12,13 @@
             <h:form id="CompaniaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{companiaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateCompaniaLabel_idCompania}" for="idCompania" />
-                        <p:inputText id="idCompania" value="#{companiaController.selected.idCompania}" title="#{bundle.CreateCompaniaTitle_idCompania}" required="true" requiredMessage="#{bundle.CreateCompaniaRequiredMessage_idCompania}"/>
+                        <p:outputLabel value="#{bundle.CreateCompaniaLabel_idCompania}" for="idCompania" rendered="false"/>
+                        <p:inputText id="idCompania" value="#{companiaController.selected.idCompania}" title="#{bundle.CreateCompaniaTitle_idCompania}" required="true" requiredMessage="#{bundle.CreateCompaniaRequiredMessage_idCompania}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateCompaniaLabel_compania}" for="compania" />
                         <p:inputText id="compania" value="#{companiaController.selected.compania}" title="#{bundle.CreateCompaniaTitle_compania}" required="true" requiredMessage="#{bundle.CreateCompaniaRequiredMessage_compania}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{companiaController.create}" value="#{bundle.Save}" update="display,:CompaniaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CompaniaCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="CompaniaCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CompaniaCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

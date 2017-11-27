@@ -12,19 +12,21 @@
             <h:form id="UbicacionCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{ubicacionController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateUbicacionLabel_idUbicacion}" for="idUbicacion" />
-                        <p:inputText id="idUbicacion" value="#{ubicacionController.selected.idUbicacion}" title="#{bundle.CreateUbicacionTitle_idUbicacion}" required="true" requiredMessage="#{bundle.CreateUbicacionRequiredMessage_idUbicacion}"/>
+                        <p:outputLabel value="#{bundle.CreateUbicacionLabel_idUbicacion}" for="idUbicacion" rendered="false"/>
+                        <p:inputText id="idUbicacion" value="#{ubicacionController.selected.idUbicacion}" title="#{bundle.CreateUbicacionTitle_idUbicacion}" required="true" requiredMessage="#{bundle.CreateUbicacionRequiredMessage_idUbicacion}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateUbicacionLabel_ubicacion}" for="ubicacion" />
                         <p:inputText id="ubicacion" value="#{ubicacionController.selected.ubicacion}" title="#{bundle.CreateUbicacionTitle_ubicacion}" />
                         <p:outputLabel value="#{bundle.CreateUbicacionLabel_plataformaidPlataforma}" for="plataformaidPlataforma" />
                         <p:selectOneMenu id="plataformaidPlataforma" value="#{ubicacionController.selected.plataformaidPlataforma}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{plataformaController.itemsAvailableSelectOne}"
                                            var="plataformaidPlataformaItem"
+                                           itemLabel="#{plataformaidPlataformaItem.plataforma}"
                                            itemValue="#{plataformaidPlataformaItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{ubicacionController.create}" value="#{bundle.Save}" update="display,:UbicacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'UbicacionCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="UbicacionCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UbicacionCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

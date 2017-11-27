@@ -12,13 +12,13 @@
             <h:form id="EstadoCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{estadoController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEstadoLabel_idEstado}" for="idEstado" />
-                        <p:inputText id="idEstado" value="#{estadoController.selected.idEstado}" title="#{bundle.CreateEstadoTitle_idEstado}" required="true" requiredMessage="#{bundle.CreateEstadoRequiredMessage_idEstado}"/>
+                        <p:outputLabel value="#{bundle.CreateEstadoLabel_idEstado}" for="idEstado" rendered="false"/>
+                        <p:inputText id="idEstado" value="#{estadoController.selected.idEstado}" title="#{bundle.CreateEstadoTitle_idEstado}" required="true" requiredMessage="#{bundle.CreateEstadoRequiredMessage_idEstado}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateEstadoLabel_estado}" for="estado" />
                         <p:inputText id="estado" value="#{estadoController.selected.estado}" title="#{bundle.CreateEstadoTitle_estado}" required="true" requiredMessage="#{bundle.CreateEstadoRequiredMessage_estado}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{estadoController.create}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadoCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="EstadoCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EstadoCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

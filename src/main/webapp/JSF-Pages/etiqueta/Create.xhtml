@@ -12,13 +12,13 @@
             <h:form id="EtiquetaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{etiquetaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateEtiquetaLabel_idEtiqueta}" for="idEtiqueta" />
-                        <p:inputText id="idEtiqueta" value="#{etiquetaController.selected.idEtiqueta}" title="#{bundle.CreateEtiquetaTitle_idEtiqueta}" required="true" requiredMessage="#{bundle.CreateEtiquetaRequiredMessage_idEtiqueta}"/>
+                        <p:outputLabel value="#{bundle.CreateEtiquetaLabel_idEtiqueta}" for="idEtiqueta" rendered="false"/>
+                        <p:inputText id="idEtiqueta" value="#{etiquetaController.selected.idEtiqueta}" title="#{bundle.CreateEtiquetaTitle_idEtiqueta}" required="true" requiredMessage="#{bundle.CreateEtiquetaRequiredMessage_idEtiqueta}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateEtiquetaLabel_etiqueta}" for="etiqueta" />
                         <p:inputText id="etiqueta" value="#{etiquetaController.selected.etiqueta}" title="#{bundle.CreateEtiquetaTitle_etiqueta}" required="true" requiredMessage="#{bundle.CreateEtiquetaRequiredMessage_etiqueta}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{etiquetaController.create}" value="#{bundle.Save}" update="display,:EtiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtiquetaCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="EtiquetaCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtiquetaCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

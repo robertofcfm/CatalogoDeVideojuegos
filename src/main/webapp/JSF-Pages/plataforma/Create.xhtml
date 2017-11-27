@@ -12,19 +12,21 @@
             <h:form id="PlataformaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{plataformaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreatePlataformaLabel_idPlataforma}" for="idPlataforma" />
-                        <p:inputText id="idPlataforma" value="#{plataformaController.selected.idPlataforma}" title="#{bundle.CreatePlataformaTitle_idPlataforma}" required="true" requiredMessage="#{bundle.CreatePlataformaRequiredMessage_idPlataforma}"/>
+                        <p:outputLabel value="#{bundle.CreatePlataformaLabel_idPlataforma}" for="idPlataforma" rendered="false"/>
+                        <p:inputText id="idPlataforma" value="#{plataformaController.selected.idPlataforma}" title="#{bundle.CreatePlataformaTitle_idPlataforma}" required="true" requiredMessage="#{bundle.CreatePlataformaRequiredMessage_idPlataforma}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreatePlataformaLabel_plataforma}" for="plataforma" />
                         <p:inputText id="plataforma" value="#{plataformaController.selected.plataforma}" title="#{bundle.CreatePlataformaTitle_plataforma}" required="true" requiredMessage="#{bundle.CreatePlataformaRequiredMessage_plataforma}"/>
                         <p:outputLabel value="#{bundle.CreatePlataformaLabel_companiaidCompania}" for="companiaidCompania" />
                         <p:selectOneMenu id="companiaidCompania" value="#{plataformaController.selected.companiaidCompania}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{companiaController.itemsAvailableSelectOne}"
                                            var="companiaidCompaniaItem"
+                                           itemLabel="#{companiaidCompaniaItem.compania}"/>
                                            itemValue="#{companiaidCompaniaItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{plataformaController.create}" value="#{bundle.Save}" update="display,:PlataformaListForm:datalist,:growl" oncomplete="handleSubmit(args,'PlataformaCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="PlataformaCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlataformaCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

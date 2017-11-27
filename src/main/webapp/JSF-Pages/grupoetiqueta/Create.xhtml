@@ -12,13 +12,13 @@
             <h:form id="GrupoetiquetaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{grupoetiquetaController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateGrupoetiquetaLabel_idGrupoEtiqueta}" for="idGrupoEtiqueta" />
-                        <p:inputText id="idGrupoEtiqueta" value="#{grupoetiquetaController.selected.idGrupoEtiqueta}" title="#{bundle.CreateGrupoetiquetaTitle_idGrupoEtiqueta}" required="true" requiredMessage="#{bundle.CreateGrupoetiquetaRequiredMessage_idGrupoEtiqueta}"/>
+                        <p:outputLabel value="#{bundle.CreateGrupoetiquetaLabel_idGrupoEtiqueta}" for="idGrupoEtiqueta" rendered="false"/>
+                        <p:inputText id="idGrupoEtiqueta" value="#{grupoetiquetaController.selected.idGrupoEtiqueta}" title="#{bundle.CreateGrupoetiquetaTitle_idGrupoEtiqueta}" required="true" requiredMessage="#{bundle.CreateGrupoetiquetaRequiredMessage_idGrupoEtiqueta}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateGrupoetiquetaLabel_grupoEtiqueta}" for="grupoEtiqueta" />
                         <p:inputText id="grupoEtiqueta" value="#{grupoetiquetaController.selected.grupoEtiqueta}" title="#{bundle.CreateGrupoetiquetaTitle_grupoEtiqueta}" required="true" requiredMessage="#{bundle.CreateGrupoetiquetaRequiredMessage_grupoEtiqueta}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{grupoetiquetaController.create}" value="#{bundle.Save}" update="display,:GrupoetiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'GrupoetiquetaCreateDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="GrupoetiquetaCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="GrupoetiquetaCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>
