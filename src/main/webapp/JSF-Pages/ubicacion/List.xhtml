@@ -14,45 +14,73 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="UbicacionListForm">
-                <p:panel header="#{bundle.ListUbicacionTitle}">
-                    <p:dataTable id="datalist" value="#{ubicacionController.items}" var="item"
-                                 selectionMode="single" selection="#{ubicacionController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.idUbicacion}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+            <h:form id="UbicacionListForm" class="formTable">
+                <p:dataTable id="datalist" value="#{ubicacionController.items}" var="item"
+                             selectionMode="single" selection="#{ubicacionController.selected}"
+                             paginator="true"
+                             rowKey="#{item.idUbicacion}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             widgetVar="tabla"
+                             reflow="true" liveResize="true"
+                             resizableColumns="true" resizeMode="expand"
+                             emptyMessage="#{bundle.ListUbicacionEmpty}"
+                             draggableColumns="true"
+                             scrollable="true" scrollWidth="100%" scrollHeight="100%"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUbicacionTitle_idUbicacion}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idUbicacion}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUbicacionTitle_ubicacion}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ubicacion}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListUbicacionTitle_plataformaidPlataforma}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.plataformaidPlataforma}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ubicacionController.prepareCreate}" update=":UbicacionCreateForm" oncomplete="PF('UbicacionCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":UbicacionViewForm" oncomplete="PF('UbicacionViewDialog').show()" disabled="#{empty ubicacionController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":UbicacionEditForm" oncomplete="PF('UbicacionEditDialog').show()" disabled="#{empty ubicacionController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{ubicacionController.destroy}" update=":growl,datalist" disabled="#{empty ubicacionController.selected}"/>
+                    <p:column rendered="false">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListUbicacionTitle_idUbicacion}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.idUbicacion}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.ubicacion}" filterBy="#{item.ubicacion}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListUbicacionTitle_ubicacion}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ubicacion}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.plataformaidPlataforma}" filterBy="#{item.plataformaidPlataforma}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListUbicacionTitle_plataformaidPlataforma}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.plataformaidPlataforma}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <div name="footer-left" class="footer-left">
+                            <i class="fa fa-filter" aria-hidden="true"></i>
+                            <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
+                            <h:commandLink>
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xls" target="datalist" fileName="plataformas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                <p:dataExporter type="csv" target="datalist" fileName="plataformas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                <p:dataExporter type="pdf" target="datalist" fileName="plataformas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xml" target="datalist" fileName="plataformas"/>
+                            </h:commandLink>
+                        </div>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ubicacionController.prepareCreate}" update=":UbicacionCreateForm" oncomplete="PF('UbicacionCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":UbicacionViewForm" oncomplete="PF('UbicacionViewDialog').show()" disabled="#{empty ubicacionController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":UbicacionEditForm" oncomplete="PF('UbicacionEditDialog').show()" disabled="#{empty ubicacionController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{ubicacionController.destroy}" update=":growl,datalist" disabled="#{empty ubicacionController.selected}"/>
+                        <div name="header-right" class="header-right" >
+                            <p:commandButton id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                            <p:columnToggler datasource="datalist" trigger="toggler" />
+                        </div>
+                    </f:facet>
+                </p:dataTable>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

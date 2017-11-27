@@ -1,11 +1,14 @@
 package com.furrias.catalogodevideojuegos.jsf;
 
 import com.furrias.catalogodevideojuegos.entidad.Etiqueta;
+import com.furrias.catalogodevideojuegos.entidad.Grupoetiqueta;
 import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil;
 import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
 import com.furrias.catalogodevideojuegos.sessionBean.EtiquetaFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,8 +80,25 @@ public class EtiquetaController implements Serializable {
     public List<Etiqueta> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+            Collections.sort(items, new CompararEtiquetas());
         }
         return items;
+    }
+
+    public String filtrarGrupos(List<Grupoetiqueta> varEtiquetas) {
+        String resultado = "";
+        for (Grupoetiqueta elemento : varEtiquetas) {
+            resultado += " " + elemento.getGrupoEtiqueta();
+        }
+        return resultado;
+    }
+
+    public String ordenarGrupos(List<Grupoetiqueta> varEtiquetas) {
+        String resultado = "";
+        for (Grupoetiqueta elemento : varEtiquetas) {
+            resultado += " " + elemento.getGrupoEtiqueta();
+        }
+        return resultado;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
@@ -114,11 +134,23 @@ public class EtiquetaController implements Serializable {
     }
 
     public List<Etiqueta> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        List<Etiqueta> listEtiquetas = getFacade().findAll();
+        Collections.sort(listEtiquetas, new CompararEtiquetas());
+        return listEtiquetas;
     }
 
     public List<Etiqueta> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<Etiqueta> listEtiquetas = getFacade().findAll();
+        Collections.sort(listEtiquetas, new CompararEtiquetas());
+        return listEtiquetas;
+    }
+
+    private class CompararEtiquetas implements Comparator<Etiqueta> {
+
+        @Override
+        public int compare(Etiqueta o1, Etiqueta o2) {
+            return o1.getEtiqueta().compareTo(o2.getEtiqueta());
+        }
     }
 
     @FacesConverter(forClass = Etiqueta.class)

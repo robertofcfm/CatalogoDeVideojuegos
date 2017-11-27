@@ -14,39 +14,67 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="CompaniaListForm">
-                <p:panel header="#{bundle.ListCompaniaTitle}">
-                    <p:dataTable id="datalist" value="#{companiaController.items}" var="item"
-                                 selectionMode="single" selection="#{companiaController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.idCompania}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+            <h:form id="CompaniaListForm" class="formTable" >
+                <p:dataTable id="datalist" value="#{companiaController.items}" var="item"
+                             selectionMode="single" selection="#{companiaController.selected}"
+                             paginator="true"
+                             widgetVar="tabla"
+                             emptyMessage="#{bundle.ListCompaniaEmpty}"
+                             reflow="true" liveResize="true"
+                             resizableColumns="true" resizeMode="expand"
+                             draggableColumns="true"
+                             scrollable="true" scrollWidth="100%" scrollHeight="100%"
+                             rowKey="#{item.idCompania}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCompaniaTitle_idCompania}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idCompania}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCompaniaTitle_compania}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.compania}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{companiaController.prepareCreate}" update=":CompaniaCreateForm" oncomplete="PF('CompaniaCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CompaniaViewForm" oncomplete="PF('CompaniaViewDialog').show()" disabled="#{empty companiaController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CompaniaEditForm" oncomplete="PF('CompaniaEditDialog').show()" disabled="#{empty companiaController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{companiaController.destroy}" update=":growl,datalist" disabled="#{empty companiaController.selected}"/>
+                    <p:column rendered="false">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListCompaniaTitle_idCompania}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.idCompania}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.compania}" filterBy="#{item.compania}" filterMatchMode="contains">
+                        <f:facet name="header" class="encabezadoTabla">
+                            <h:outputText value="#{bundle.ListCompaniaTitle_compania}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.compania}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <div name="footer-left" class="footer-left">
+                            <i class="fa fa-filter" aria-hidden="true"></i>
+                            <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
+                            <h:commandLink>
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xls" target="datalist" fileName="companias"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                <p:dataExporter type="csv" target="datalist" fileName="companias"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                <p:dataExporter type="pdf" target="datalist" fileName="companias"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xml" target="datalist" fileName="companias"/>
+                            </h:commandLink>
+                        </div>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{companiaController.prepareCreate}" update=":CompaniaCreateForm" oncomplete="PF('CompaniaCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CompaniaViewForm" oncomplete="PF('CompaniaViewDialog').show()" disabled="#{empty companiaController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CompaniaEditForm" oncomplete="PF('CompaniaEditDialog').show()" disabled="#{empty companiaController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{companiaController.destroy}" update=":growl,datalist" disabled="#{empty companiaController.selected}"/>
+                        <div name="header-right" class="header-right" >
+                            <p:commandButton id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                            <p:columnToggler datasource="datalist" trigger="toggler" />
+                        </div>
+                    </f:facet>
+                </p:dataTable>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

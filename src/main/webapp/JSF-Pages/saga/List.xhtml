@@ -14,39 +14,67 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="SagaListForm">
-                <p:panel header="#{bundle.ListSagaTitle}">
-                    <p:dataTable id="datalist" value="#{sagaController.items}" var="item"
-                                 selectionMode="single" selection="#{sagaController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.idSaga}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+            <h:form id="SagaListForm" class="formTable">
+                <p:dataTable id="datalist" value="#{sagaController.items}" var="item"
+                             selectionMode="single" selection="#{sagaController.selected}"
+                             paginator="true"
+                             rowKey="#{item.idSaga}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             widgetVar="tabla"
+                             reflow="true" liveResize="true"
+                             resizableColumns="true" resizeMode="expand"
+                             emptyMessage="#{bundle.ListSagaEmpty}"
+                             draggableColumns="true"
+                             scrollable="true" scrollWidth="100%" scrollHeight="100%"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSagaTitle_idSaga}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idSaga}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListSagaTitle_saga}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.saga}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{sagaController.prepareCreate}" update=":SagaCreateForm" oncomplete="PF('SagaCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SagaViewForm" oncomplete="PF('SagaViewDialog').show()" disabled="#{empty sagaController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SagaEditForm" oncomplete="PF('SagaEditDialog').show()" disabled="#{empty sagaController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{sagaController.destroy}" update=":growl,datalist" disabled="#{empty sagaController.selected}"/>
+                    <p:column rendered="false">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSagaTitle_idSaga}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.idSaga}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.saga}" filterBy="#{item.saga}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListSagaTitle_saga}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.saga}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <div name="footer-left" class="footer-left">
+                            <i class="fa fa-filter" aria-hidden="true"></i>
+                            <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
+                            <h:commandLink>
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xls" target="datalist" fileName="sagas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                <p:dataExporter type="csv" target="datalist" fileName="sagas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                <p:dataExporter type="pdf" target="datalist" fileName="sagas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xml" target="datalist" fileName="sagas"/>
+                            </h:commandLink>
+                        </div>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{sagaController.prepareCreate}" update=":SagaCreateForm" oncomplete="PF('SagaCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":SagaViewForm" oncomplete="PF('SagasViewDialog').show()" disabled="#{empty sagaController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":SagaEditForm" oncomplete="PF('SagaEditDialog').show()" disabled="#{empty sagaController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{sagaController.destroy}" update=":growl,datalist" disabled="#{empty sagaController.selected}"/>
+                        <div name="header-right" class="header-right" >
+                            <p:commandButton id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                            <p:columnToggler datasource="datalist" trigger="toggler" />
+                        </div>
+                    </f:facet>
+                </p:dataTable>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

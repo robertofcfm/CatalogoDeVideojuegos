@@ -14,39 +14,67 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="EstadoListForm">
-                <p:panel header="#{bundle.ListEstadoTitle}">
-                    <p:dataTable id="datalist" value="#{estadoController.items}" var="item"
-                                 selectionMode="single" selection="#{estadoController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.idEstado}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+            <h:form id="EstadoListForm" class="formTable" >
+                <p:dataTable id="datalist" value="#{estadoController.items}" var="item"
+                             selectionMode="single" selection="#{estadoController.selected}"
+                             paginator="true"
+                             rowKey="#{item.idEstado}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             widgetVar="tabla"
+                             reflow="true" liveResize="true"
+                             resizableColumns="true" resizeMode="expand"
+                             emptyMessage="#{bundle.ListEstadoEmpty}"
+                             draggableColumns="true"
+                             scrollable="true" scrollWidth="100%" scrollHeight="100%"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEstadoTitle_idEstado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idEstado}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEstadoTitle_estado}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.estado}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{estadoController.prepareCreate}" update=":EstadoCreateForm" oncomplete="PF('EstadoCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EstadoViewForm" oncomplete="PF('EstadoViewDialog').show()" disabled="#{empty estadoController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EstadoEditForm" oncomplete="PF('EstadoEditDialog').show()" disabled="#{empty estadoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{estadoController.destroy}" update=":growl,datalist" disabled="#{empty estadoController.selected}"/>
+                    <p:column rendered="false">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEstadoTitle_idEstado}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.idEstado}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.estado}" filterBy="#{item.estado}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEstadoTitle_estado}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.estado}"/>
+                    </p:column>
+                    <f:facet name="footer">
+                        <div name="footer-left" class="footer-left">
+                            <i class="fa fa-filter" aria-hidden="true"></i>
+                            <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
+                            <h:commandLink>
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xls" target="datalist" fileName="estados"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                <p:dataExporter type="csv" target="datalist" fileName="estados"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                <p:dataExporter type="pdf" target="datalist" fileName="estados"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xml" target="datalist" fileName="estados"/>
+                            </h:commandLink>
+                        </div>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{estadoController.prepareCreate}" update=":EstadoCreateForm" oncomplete="PF('EstadoCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EstadoViewForm" oncomplete="PF('EstadoViewDialog').show()" disabled="#{empty estadoController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EstadoEditForm" oncomplete="PF('EstadoEditDialog').show()" disabled="#{empty estadoController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{estadoController.destroy}" update=":growl,datalist" disabled="#{empty estadoController.selected}"/>
+                        <div name="header-right" class="header-right" >
+                            <p:commandButton id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                            <p:columnToggler datasource="datalist" trigger="toggler" />
+                        </div>
+                    </f:facet>
+                </p:dataTable>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

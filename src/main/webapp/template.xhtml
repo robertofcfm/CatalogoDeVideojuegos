@@ -9,6 +9,8 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     </h:head>
 
     <h:body>
@@ -16,31 +18,18 @@
         <p:growl id="growl" life="3000" />
 
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="65" header="#{bundle.AppName}">
-                <h:form id="menuForm">
-                    <p:menubar>
-                        <p:menuitem value="#{bundle.Home}" outcome="/index" icon="ui-icon-home"/>
-                        <p:submenu label="#{bundle.Maintenance}">
-                            <p:menuitem value="Compania" outcome="/JSF-Pages/compania/List.xhtml" />
-                            <p:menuitem value="Division" outcome="/JSF-Pages/division/List.xhtml" />
-                            <p:menuitem value="Estado" outcome="/JSF-Pages/estado/List.xhtml" />
-                            <p:menuitem value="Etiqueta" outcome="/JSF-Pages/etiqueta/List.xhtml" />
-                            <p:menuitem value="Grupoetiqueta" outcome="/JSF-Pages/grupoetiqueta/List.xhtml" />
-                            <p:menuitem value="Plataforma" outcome="/JSF-Pages/plataforma/List.xhtml" />
-                            <p:menuitem value="Saga" outcome="/JSF-Pages/saga/List.xhtml" />
-                            <p:menuitem value="Ubicacion" outcome="/JSF-Pages/ubicacion/List.xhtml" />
-                            <p:menuitem value="Videojuego" outcome="/JSF-Pages/videojuego/List.xhtml" />
-                        </p:submenu>
-                    </p:menubar>
-                </h:form>
+            <p:layoutUnit position="north" styleClass="layoutEncabezado">
+                <div class="encabezado">
+                    <i class="fa fa-gamepad elementoEncabezado" aria-hidden="true"></i>
+                    <h:outputText class="elementoEncabezado" value="#{bundle.AppName}"></h:outputText>
+                    <div class="elementoEncabezadoIzq"> <ui:insert name="title"/></div>
+                </div>
             </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="60">
-                <ui:insert name="footer"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
-                <ui:insert name="body"/>
+            <p:layoutUnit position="center" styleClass="layoutContenido">
+                <div class="contenido">
+                    <ui:insert name="body"/>
+                </div>
             </p:layoutUnit>
 
         </p:layout>

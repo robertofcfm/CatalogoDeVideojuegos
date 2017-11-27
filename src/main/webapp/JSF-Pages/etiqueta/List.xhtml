@@ -14,39 +14,76 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="EtiquetaListForm">
-                <p:panel header="#{bundle.ListEtiquetaTitle}">
-                    <p:dataTable id="datalist" value="#{etiquetaController.items}" var="item"
-                                 selectionMode="single" selection="#{etiquetaController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.idEtiqueta}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+            <h:form id="EtiquetaListForm" class="formTable">
+                <p:dataTable id="datalist" value="#{etiquetaController.items}" var="item"
+                             selectionMode="single" selection="#{etiquetaController.selected}"
+                             paginator="true"
+                             rowKey="#{item.idEtiqueta}"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             widgetVar="tabla"
+                             reflow="true" liveResize="true"
+                             resizableColumns="true" resizeMode="expand"
+                             emptyMessage="#{bundle.ListEtiquetasEmpty}"
+                             draggableColumns="true"
+                             scrollable="true" scrollWidth="100%" scrollHeight="100%"
+                             >
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEtiquetaTitle_idEtiqueta}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idEtiqueta}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListEtiquetaTitle_etiqueta}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.etiqueta}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{etiquetaController.prepareCreate}" update=":EtiquetaCreateForm" oncomplete="PF('EtiquetaCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EtiquetaViewForm" oncomplete="PF('EtiquetaViewDialog').show()" disabled="#{empty etiquetaController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EtiquetaEditForm" oncomplete="PF('EtiquetaEditDialog').show()" disabled="#{empty etiquetaController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{etiquetaController.destroy}" update=":growl,datalist" disabled="#{empty etiquetaController.selected}"/>
+                    <p:column rendered="false">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEtiquetaTitle_idEtiqueta}"/>
                         </f:facet>
-                    </p:dataTable>
-                </p:panel>
+                        <h:outputText value="#{item.idEtiqueta}"/>
+                    </p:column>
+                    <p:column sortBy="#{item.etiqueta}" filterBy="#{item.etiqueta}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.ListEtiquetaTitle_etiqueta}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.etiqueta}"/>
+                    </p:column>
+                    <p:column sortBy="#{etiquetaController.filtrarGrupos(item.grupoetiquetaList)}" filterBy="#{etiquetaController.filtrarGrupos(item.grupoetiquetaList)}" filterMatchMode="contains">
+                        <f:facet name="header">
+                            <i class="fa fa-tags" aria-hidden="true"></i>
+                            <h:outputText value="#{bundle.ListGrupoetiquetaTitle_grupoEtiqueta}"/>
+                        </f:facet>
+                        <p:repeat value="#{item.grupoetiquetaList}" var="varEtiqueta">
+                            <h:outputText value="#{varEtiqueta.grupoEtiqueta}"/><br/>
+                        </p:repeat>
+                    </p:column>
+                    <f:facet name="footer">
+                        <div name="footer-left" class="footer-left">
+                            <i class="fa fa-filter" aria-hidden="true"></i>
+                            <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
+                            <h:commandLink>
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xls" target="datalist" fileName="etiquetas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                <p:dataExporter type="csv" target="datalist" fileName="etiquetas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                <p:dataExporter type="pdf" target="datalist" fileName="etiquetas"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                <p:dataExporter type="xml" target="datalist" fileName="etiquetas"/>
+                            </h:commandLink>
+                        </div>
+                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{etiquetaController.prepareCreate}" update=":EtiquetaCreateForm" oncomplete="PF('EtiquetaCreateDialog').show()"/>
+                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":EtiquetaViewForm" oncomplete="PF('EtiquetaViewDialog').show()" disabled="#{empty etiquetaController.selected}"/>
+                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EtiquetaEditForm" oncomplete="PF('EtiquetaEditDialog').show()" disabled="#{empty etiquetaController.selected}"/>
+                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{etiquetaController.destroy}" update=":growl,datalist" disabled="#{empty etiquetaController.selected}"/>
+                        <div name="header-right" class="header-right" >
+                            <p:commandButton id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                            <p:columnToggler datasource="datalist" trigger="toggler" />
+                        </div>
+                    </f:facet>
+                </p:dataTable>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

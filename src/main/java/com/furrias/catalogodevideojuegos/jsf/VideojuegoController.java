@@ -1,11 +1,14 @@
 package com.furrias.catalogodevideojuegos.jsf;
 
+import com.furrias.catalogodevideojuegos.entidad.Etiqueta;
 import com.furrias.catalogodevideojuegos.entidad.Videojuego;
 import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil;
 import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
 import com.furrias.catalogodevideojuegos.sessionBean.VideojuegoFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,8 +80,25 @@ public class VideojuegoController implements Serializable {
     public List<Videojuego> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+            Collections.sort(items, new CompararVideojuegos());
         }
         return items;
+    }
+
+    public String filtrarEtiquetas(List<Etiqueta> varEtiquetas) {
+        String resultado = "";
+        for (Etiqueta elemento : varEtiquetas) {
+            resultado += " " + elemento.getEtiqueta();
+        }
+        return resultado;
+    }
+
+    public String ordenarEtiquetas(List<Etiqueta> varEtiquetas) {
+        String resultado = "";
+        for (Etiqueta elemento : varEtiquetas) {
+            resultado += " " + elemento.getEtiqueta();
+        }
+        return resultado;
     }
 
     private void persist(PersistAction persistAction, String successMessage) {
@@ -114,11 +134,23 @@ public class VideojuegoController implements Serializable {
     }
 
     public List<Videojuego> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        List<Videojuego> listVideojuegos = getFacade().findAll();
+        Collections.sort(listVideojuegos, new CompararVideojuegos());
+        return listVideojuegos;
     }
 
     public List<Videojuego> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<Videojuego> listVideojuegos = getFacade().findAll();
+        Collections.sort(listVideojuegos, new CompararVideojuegos());
+        return listVideojuegos;
+    }
+
+    private class CompararVideojuegos implements Comparator<Videojuego> {
+
+        @Override
+        public int compare(Videojuego o1, Videojuego o2) {
+            return o1.getVideojuego().compareTo(o2.getVideojuego());
+        }
     }
 
     @FacesConverter(forClass = Videojuego.class)
