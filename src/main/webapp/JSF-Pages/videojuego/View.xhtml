@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="VideojuegoViewDlg" widgetVar="VideojuegoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVideojuegoTitle}">
+            <h:form id="VideojuegoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{videojuegoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idVideojuego}"/>
+                        <h:outputText value="#{videojuegoController.selected.idVideojuego}" title="#{bundle.ViewVideojuegoTitle_idVideojuego}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_videojuego}"/>
+                        <h:outputText value="#{videojuegoController.selected.videojuego}" title="#{bundle.ViewVideojuegoTitle_videojuego}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_numJugadores}"/>
+                        <h:outputText value="#{videojuegoController.selected.numJugadores}" title="#{bundle.ViewVideojuegoTitle_numJugadores}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_lanzamiento}"/>
+                        <h:outputText value="#{videojuegoController.selected.lanzamiento}" title="#{bundle.ViewVideojuegoTitle_lanzamiento}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idDistribuidor}"/>
+                        <h:outputText value="#{videojuegoController.selected.idDistribuidor}" title="#{bundle.ViewVideojuegoTitle_idDistribuidor}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_idDesarrollador}"/>
+                        <h:outputText value="#{videojuegoController.selected.idDesarrollador}" title="#{bundle.ViewVideojuegoTitle_idDesarrollador}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_estadoidEstado}"/>
+                        <h:outputText value="#{videojuegoController.selected.estadoidEstado}" title="#{bundle.ViewVideojuegoTitle_estadoidEstado}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_sagaidSaga}"/>
+                        <h:outputText value="#{videojuegoController.selected.sagaidSaga}" title="#{bundle.ViewVideojuegoTitle_sagaidSaga}"/>
+                        <h:outputText value="#{bundle.ViewVideojuegoLabel_ubicacionidUbicacion}"/>
+                        <h:outputText value="#{videojuegoController.selected.ubicacionidUbicacion}" title="#{bundle.ViewVideojuegoTitle_ubicacionidUbicacion}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="VideojuegoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

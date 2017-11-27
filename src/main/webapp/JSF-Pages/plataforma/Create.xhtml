@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlataformaCreateDlg" widgetVar="PlataformaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePlataformaTitle}">
+            <h:form id="PlataformaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{plataformaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePlataformaLabel_idPlataforma}" for="idPlataforma" />
+                        <p:inputText id="idPlataforma" value="#{plataformaController.selected.idPlataforma}" title="#{bundle.CreatePlataformaTitle_idPlataforma}" required="true" requiredMessage="#{bundle.CreatePlataformaRequiredMessage_idPlataforma}"/>
+                        <p:outputLabel value="#{bundle.CreatePlataformaLabel_plataforma}" for="plataforma" />
+                        <p:inputText id="plataforma" value="#{plataformaController.selected.plataforma}" title="#{bundle.CreatePlataformaTitle_plataforma}" required="true" requiredMessage="#{bundle.CreatePlataformaRequiredMessage_plataforma}"/>
+                        <p:outputLabel value="#{bundle.CreatePlataformaLabel_companiaidCompania}" for="companiaidCompania" />
+                        <p:selectOneMenu id="companiaidCompania" value="#{plataformaController.selected.companiaidCompania}" >
+                            <f:selectItems value="#{companiaController.itemsAvailableSelectOne}"
+                                           var="companiaidCompaniaItem"
+                                           itemValue="#{companiaidCompaniaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{plataformaController.create}" value="#{bundle.Save}" update="display,:PlataformaListForm:datalist,:growl" oncomplete="handleSubmit(args,'PlataformaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlataformaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
