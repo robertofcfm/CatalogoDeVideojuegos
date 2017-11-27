@@ -1,17 +1,196 @@
-.ui-widget {
-    font-size: 12px !important;
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 26/11/2017, 10:07:10 PM
+    Author     : Roberto
+*/
+html {
+  box-sizing: border-box;
 }
-.ui-layout-north {
-    z-index: 20 !important;
-    overflow: visible !important;;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
-.ui-layout-north .ui-layout-unit-content {
-    overflow: visible !important;
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
-.ui-widget-header {
-    text-align: center;
-    text-transform: uppercase;
+* {
+  font-family: 'Inconsolata', serif;
+  box-shadow: none!important;
+  border: none!important;
 }
+a {
+  text-decoration: none;
+}
+.layoutEncabezado,
+.layoutContenido {
+  border: 0px;
+  margin-top: 0px!important;
+  margin-bottom: 0px!important;
+}
+.contenido {
+  height: 98%;
+}
+.elementoEncabezado {
+  display: inline-block;
+  margin: 0.8% 0% 0.8% 1%;
+}
+.elementoEncabezadoIzq {
+  float: right;
+  margin: 0.8% 1% 0.8% 0%;
+}
+.encabezado,
+.contenido {
+  margin: 0% 1% 0% 1%!important;
+}
+.encabezado,
+.contenido {
+  padding: 0px;
+}
+.encabezado,
+.contenido,
+.marcoFoto {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+}
+.marcoFoto {
+  float: left;
+  width: 18.8%;
+  padding: 0px;
+  display: inline-block;
+  margin: 1% 0% 0% 1%;
+  position: relative;
+  z-index: 0;
+}
+.contenidoFoto {
+  position: relative;
+}
+img {
+  width: 100%;
+}
+.nombreFoto {
+  text-align: center;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header,
+.ui-widget-header .ui-state-default {
+  background: white;
+}
+.ui-datatable-odd,
+.ui-datatable-even {
+  background: white;
+}
+.ui-datatable .ui-paginator,
+.ui-datatable .ui-datatable-footer,
+.ui-datatable .ui-column-filter,
+.ui-datatable tbody td,
+.ui-datatable thead th,
+.ui-paginator .ui-paginator-rpp-options,
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev,
+.ui-panelgrid td,
+.ui-panelgrid tr {
+  border: none!important;
+}
+.ui-selectonemenu-trigger {
+  border: none!important;
+}
+.ui-panelgrid *,
+.ui-datatable * {
+  font-size: small;
+}
+.ui-datatable tbody td,
+.ui-inputfield,
+.ui-column-filter.ui-inputfield {
+  border-bottom: lightgray 1px solid!important;
+}
+.ui-panelgrid-cell > .ui-inputfield:hover,
+.ui-panelgrid-cell > .ui-inputfield:focus,
+.ui-panelgrid-cell > .ui-selectonemenu:hover,
+.ui-panelgrid-cell > .ui-selectonemenu:focus,
+.ui-panelgrid-cell > .ui-selectonemany:hover,
+.ui-panelgrid-cell > .ui-selectonemany:focus,
+.ui-column-filter.ui-inputfield:hover,
+.ui-column-filter.ui-inputfield:focus,
+.ui-spinner-input:hover,
+.ui-spinner-input:focus,
+.globalFilter:hover,
+.globalFilter:focus,
+.ui-paginator .ui-paginator-page:hover,
+.ui-paginator .ui-paginator-page.ui-state-default.ui-state-active,
+.ui-button:focus {
+  outline: gold 2px solid !important;
+}
+.ui-column-filter.ui-inputfield.ui-inputtext {
+  width: 80%;
+}
+.colLanzamiento {
+  width: 20px;
+}
+.ui-datatable tbody tr:hover,
+.ui-selectonemenu-list-item:hover,
+.encabezado,
+.ui-selectlistbox-item:hover,
 .ui-button {
-    margin-top: 10px !important;
+  background-color: gold !important;
+  box-shadow: none!important;
 }
+.ui-datatable thead th {
+  padding: 0px 0px 1px 0px!important;
+  margin: 1px;
+  font-size: medium;
+}
+.zoom {
+  transition: 1.5s ease;
+  -moz-transition: 1.5s ease;
+  /* Firefox */
+  -webkit-transition: 1.5s ease;
+  /* Chrome - Safari */
+  -o-transition: 1.5s ease;
+  /* Opera */
+}
+.zoom:hover {
+  z-index: 1;
+  transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  /* Firefox */
+  -webkit-transform: scale(1.2);
+  /* Chrome - Safari */
+  -o-transform: scale(1.2);
+  /* Opera */
+  -ms-transform: scale(1.2);
+  /* IE9 */
+}
+.ui-panelgrid-cell > .ui-inputfield,
+.ui-panelgrid-cell > .ui-selectonemenu,
+.ui-panelgrid-cell > .ui-selectonemany {
+  width: 400px!important;
+}
+.ui-spinner-input {
+  width: 55px!important;
+}
+.formTable {
+  height: 100%;
+}
+.footer-left {
+  display: inline-block;
+  float: left;
+}
+.globalFilter {
+  width: 150px!important;
+}
+.header-right {
+  float: right;
+}
+.ui-chkbox-icon {
+  border: lightgray 1px solid!important;
+}
+/*# sourceMappingURL=jsfcrud.css.map */

@@ -1,42 +1,45 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
-        <br />
-        <h:link outcome="/JSF-Pages/compania/List" value="Show All Compania Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/division/List" value="Show All Division Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/estado/List" value="Show All Estado Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/etiqueta/List" value="Show All Etiqueta Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/grupoetiqueta/List" value="Show All Grupoetiqueta Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/plataforma/List" value="Show All Plataforma Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/saga/List" value="Show All Saga Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/ubicacion/List" value="Show All Ubicacion Items"/>
-        <br />
-        <h:link outcome="/JSF-Pages/videojuego/List" value="Show All Videojuego Items"/>
-    </h:body>
-
-
-
-
-
-
-
-
-
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:view contentType="text/html">
+        <h:head>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+            <h:outputStylesheet name="css/jsfcrud.css"/>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>#{bundle.AppName}</title>
+            </f:facet>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"/>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" styleClass="layoutEncabezado">
+                    <div class="encabezado">
+                        <i class="fa fa-gamepad elementoEncabezado" aria-hidden="true"></i>
+                        <h:outputText class="elementoEncabezado" value="#{bundle.AppName}"></h:outputText>
+                        <h:outputText class="elementoEncabezadoIzq" value="#{bundle.MenuPrincipal}"></h:outputText>
+                    </div>
+                </p:layoutUnit>
+                <p:layoutUnit position="center" styleClass="layoutContenido" >
+                    <div class="contenido">
+                        <ui:repeat value="${menuController.menu}" var="item">
+                            <div class = "marcoFoto zoom">
+                                <div class="contenidoFoto">
+                                    <h:link outcome="${item.link}">
+                                        <div class="contenidoFoto">
+                                            <img src="${item.imagen}"/>
+                                            <div class="nombreFoto">${item.nombre}</div>
+                                        </div>
+                                    </h:link>
+                                </div>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                </p:layoutUnit>
+            </p:layout>
+        </h:body>
+    </f:view>
 </html>
 
