@@ -18,6 +18,7 @@
                 <p:dataTable id="datalist" value="#{grupoetiquetaController.items}" var="item"
                              selectionMode="single" selection="#{grupoetiquetaController.selected}"
                              paginator="true"
+                             sortBy="#{item.grupoEtiqueta}"
                              rowKey="#{item.idGrupoEtiqueta}"
                              rows="10"
                              rowsPerPageTemplate="10,20,30,40,50"

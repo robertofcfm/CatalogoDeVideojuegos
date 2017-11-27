@@ -121,7 +121,7 @@ public class GrupoetiquetaController implements Serializable {
         return getFacade().findAll();
     }
 
-    @FacesConverter(forClass = Grupoetiqueta.class)
+    @FacesConverter(forClass = Grupoetiqueta.class, value = "converterGrupo")
     public static class GrupoetiquetaControllerConverter implements Converter {
 
         @Override

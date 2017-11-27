@@ -153,7 +153,7 @@ public class EtiquetaController implements Serializable {
         }
     }
 
-    @FacesConverter(forClass = Etiqueta.class)
+    @FacesConverter(forClass = Etiqueta.class, value = "converterEtiqueta")
     public static class EtiquetaControllerConverter implements Converter {
 
         @Override

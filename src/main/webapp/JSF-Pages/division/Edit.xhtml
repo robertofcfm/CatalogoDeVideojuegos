@@ -12,8 +12,8 @@
             <h:form id="DivisionEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{divisionController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditDivisionLabel_idDivision}" for="idDivision" />
-                        <p:inputText id="idDivision" value="#{divisionController.selected.idDivision}" title="#{bundle.EditDivisionTitle_idDivision}" required="true" requiredMessage="#{bundle.EditDivisionRequiredMessage_idDivision}"/>
+                        <p:outputLabel value="#{bundle.EditDivisionLabel_idDivision}" for="idDivision" rendered="false"/>
+                        <p:inputText id="idDivision" value="#{divisionController.selected.idDivision}" title="#{bundle.EditDivisionTitle_idDivision}" required="true" requiredMessage="#{bundle.EditDivisionRequiredMessage_idDivision}" rendered="false"/>
                         <p:outputLabel value="#{bundle.EditDivisionLabel_division}" for="division" />
                         <p:inputText id="division" value="#{divisionController.selected.division}" title="#{bundle.EditDivisionTitle_division}" required="true" requiredMessage="#{bundle.EditDivisionRequiredMessage_division}"/>
                         <p:outputLabel value="#{bundle.EditDivisionLabel_companiaidDivision}" for="companiaidDivision" />
@@ -21,11 +21,12 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{companiaController.itemsAvailableSelectOne}"
                                            var="companiaidDivisionItem"
+                                           itemLabel="#{companiaidDivisionItem.compania}"
                                            itemValue="#{companiaidDivisionItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{divisionController.update}" value="#{bundle.Save}" update="display,:DivisionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DivisionEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="DivisionEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DivisionEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

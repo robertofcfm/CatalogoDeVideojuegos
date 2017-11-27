@@ -12,13 +12,22 @@
             <h:form id="EtiquetaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{etiquetaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditEtiquetaLabel_idEtiqueta}" for="idEtiqueta" />
-                        <p:inputText id="idEtiqueta" value="#{etiquetaController.selected.idEtiqueta}" title="#{bundle.EditEtiquetaTitle_idEtiqueta}" required="true" requiredMessage="#{bundle.EditEtiquetaRequiredMessage_idEtiqueta}"/>
+                        <p:outputLabel value="#{bundle.EditEtiquetaLabel_idEtiqueta}" for="idEtiqueta" rendered="false"/>
+                        <p:inputText id="idEtiqueta" value="#{etiquetaController.selected.idEtiqueta}" title="#{bundle.EditEtiquetaTitle_idEtiqueta}" required="true" requiredMessage="#{bundle.EditEtiquetaRequiredMessage_idEtiqueta}" rendered="false"/>
                         <p:outputLabel value="#{bundle.EditEtiquetaLabel_etiqueta}" for="etiqueta" />
                         <p:inputText id="etiqueta" value="#{etiquetaController.selected.etiqueta}" title="#{bundle.EditEtiquetaTitle_etiqueta}" required="true" requiredMessage="#{bundle.EditEtiquetaRequiredMessage_etiqueta}"/>
+                        <p:outputLabel value="#{bundle.CreateGrupoetiquetaLabel_grupoEtiqueta}" for="grupoetiquetaList" />
+                        <p:selectManyMenu id="grupoetiquetaList" value="#{etiquetaController.selected.grupoetiquetaList}" 
+                                          converter="converterGrupo" converterMessage="sdd" showCheckbox="true"
+                                          filter="true" filterMatchMode="contains">
+                            <f:selectItems value="#{grupoetiquetaController.itemsAvailableSelectMany}" 
+                                           var="grupoetiquetaItem" 
+                                           itemLabel="#{grupoetiquetaItem.grupoEtiqueta}" 
+                                           itemValue="#{grupoetiquetaItem}" />
+                        </p:selectManyMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{etiquetaController.update}" value="#{bundle.Save}" update="display,:EtiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EtiquetaEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="EtiquetaEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="EtiquetaEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

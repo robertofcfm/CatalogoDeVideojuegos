@@ -18,6 +18,7 @@
                 <p:dataTable id="datalist" value="#{ubicacionController.items}" var="item"
                              selectionMode="single" selection="#{ubicacionController.selected}"
                              paginator="true"
+                             sortBy="#{item.ubicacion}"
                              rowKey="#{item.idUbicacion}"
                              rows="10"
                              rowsPerPageTemplate="10,20,30,40,50"
@@ -48,7 +49,7 @@
                         <f:facet name="header">
                             <h:outputText value="#{bundle.ListUbicacionTitle_plataformaidPlataforma}"/>
                         </f:facet>
-                        <h:outputText value="#{item.plataformaidPlataforma}"/>
+                        <h:outputText value="#{item.plataformaidPlataforma.plataforma}"/>
                     </p:column>
                     <f:facet name="footer">
                         <div name="footer-left" class="footer-left">

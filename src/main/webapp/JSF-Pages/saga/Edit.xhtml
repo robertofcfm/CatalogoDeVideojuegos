@@ -12,13 +12,13 @@
             <h:form id="SagaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{sagaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditSagaLabel_idSaga}" for="idSaga" />
-                        <p:inputText id="idSaga" value="#{sagaController.selected.idSaga}" title="#{bundle.EditSagaTitle_idSaga}" required="true" requiredMessage="#{bundle.EditSagaRequiredMessage_idSaga}"/>
+                        <p:outputLabel value="#{bundle.EditSagaLabel_idSaga}" for="idSaga" rendered="false"/>
+                        <p:inputText id="idSaga" value="#{sagaController.selected.idSaga}" title="#{bundle.EditSagaTitle_idSaga}" required="true" requiredMessage="#{bundle.EditSagaRequiredMessage_idSaga}" rendered="false"/>
                         <p:outputLabel value="#{bundle.EditSagaLabel_saga}" for="saga" />
                         <p:inputText id="saga" value="#{sagaController.selected.saga}" title="#{bundle.EditSagaTitle_saga}" required="true" requiredMessage="#{bundle.EditSagaRequiredMessage_saga}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{sagaController.update}" value="#{bundle.Save}" update="display,:SagaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'SagaEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="SagaEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="SagaEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

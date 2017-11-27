@@ -12,8 +12,8 @@
             <h:form id="PlataformaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{plataformaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditPlataformaLabel_idPlataforma}" for="idPlataforma" />
-                        <p:inputText id="idPlataforma" value="#{plataformaController.selected.idPlataforma}" title="#{bundle.EditPlataformaTitle_idPlataforma}" required="true" requiredMessage="#{bundle.EditPlataformaRequiredMessage_idPlataforma}"/>
+                        <p:outputLabel value="#{bundle.EditPlataformaLabel_idPlataforma}" for="idPlataforma" rendered="false"/>
+                        <p:inputText id="idPlataforma" value="#{plataformaController.selected.idPlataforma}" title="#{bundle.EditPlataformaTitle_idPlataforma}" required="true" requiredMessage="#{bundle.EditPlataformaRequiredMessage_idPlataforma}" rendered="false"/>
                         <p:outputLabel value="#{bundle.EditPlataformaLabel_plataforma}" for="plataforma" />
                         <p:inputText id="plataforma" value="#{plataformaController.selected.plataforma}" title="#{bundle.EditPlataformaTitle_plataforma}" required="true" requiredMessage="#{bundle.EditPlataformaRequiredMessage_plataforma}"/>
                         <p:outputLabel value="#{bundle.EditPlataformaLabel_companiaidCompania}" for="companiaidCompania" />
@@ -21,11 +21,12 @@
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
                             <f:selectItems value="#{companiaController.itemsAvailableSelectOne}"
                                            var="companiaidCompaniaItem"
+                                           itemLabel="#{companiaidCompaniaItem.compania}"
                                            itemValue="#{companiaidCompaniaItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{plataformaController.update}" value="#{bundle.Save}" update="display,:PlataformaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PlataformaEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="PlataformaEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PlataformaEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

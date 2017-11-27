@@ -6,6 +6,8 @@ import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
 import com.furrias.catalogodevideojuegos.sessionBean.EstadoFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,6 +79,7 @@ public class EstadoController implements Serializable {
     public List<Estado> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+            Collections.sort(items, new CompararEstados());
         }
         return items;
     }
@@ -114,11 +117,23 @@ public class EstadoController implements Serializable {
     }
 
     public List<Estado> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        List<Estado> listEstados = getFacade().findAll();
+        Collections.sort(listEstados, new CompararEstados());
+        return listEstados;
     }
 
     public List<Estado> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<Estado> listEstados = getFacade().findAll();
+        Collections.sort(listEstados, new CompararEstados());
+        return listEstados;
+    }
+
+    private class CompararEstados implements Comparator<Estado> {
+
+        @Override
+        public int compare(Estado o1, Estado o2) {
+            return o1.getEstado().compareTo(o2.getEstado());
+        }
     }
 
     @FacesConverter(forClass = Estado.class)

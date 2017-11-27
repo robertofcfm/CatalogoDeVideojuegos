@@ -12,13 +12,13 @@
             <h:form id="CompaniaEditForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{companiaController.selected != null}">
-                        <p:outputLabel value="#{bundle.EditCompaniaLabel_idCompania}" for="idCompania" />
-                        <p:inputText id="idCompania" value="#{companiaController.selected.idCompania}" title="#{bundle.EditCompaniaTitle_idCompania}" required="true" requiredMessage="#{bundle.EditCompaniaRequiredMessage_idCompania}"/>
+                        <p:outputLabel value="#{bundle.EditCompaniaLabel_idCompania}" for="idCompania" rendered="false"/>
+                        <p:inputText id="idCompania" value="#{companiaController.selected.idCompania}" title="#{bundle.EditCompaniaTitle_idCompania}" required="true" requiredMessage="#{bundle.EditCompaniaRequiredMessage_idCompania}" rendered="false"/>
                         <p:outputLabel value="#{bundle.EditCompaniaLabel_compania}" for="compania" />
                         <p:inputText id="compania" value="#{companiaController.selected.compania}" title="#{bundle.EditCompaniaTitle_compania}" required="true" requiredMessage="#{bundle.EditCompaniaRequiredMessage_compania}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{companiaController.update}" value="#{bundle.Save}" update="display,:CompaniaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CompaniaEditDialog');"/>
-                    <p:commandButton value="#{bundle.Cancel}" onclick="CompaniaEditDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CompaniaEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
         </p:dialog>

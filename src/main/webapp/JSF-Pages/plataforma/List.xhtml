@@ -18,6 +18,7 @@
                 <p:dataTable id="datalist" value="#{plataformaController.items}" var="item"
                              selectionMode="single" selection="#{plataformaController.selected}"
                              paginator="true"
+                             sortBy="#{item.plataforma}"
                              rowKey="#{item.idPlataforma}"
                              rows="10"
                              rowsPerPageTemplate="10,20,30,40,50"

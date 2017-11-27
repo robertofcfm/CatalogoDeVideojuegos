@@ -6,6 +6,8 @@ import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
 import com.furrias.catalogodevideojuegos.sessionBean.PlataformaFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,6 +79,7 @@ public class PlataformaController implements Serializable {
     public List<Plataforma> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+            Collections.sort(items, new CompararPlataformas());
         }
         return items;
     }
@@ -114,11 +117,23 @@ public class PlataformaController implements Serializable {
     }
 
     public List<Plataforma> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        List<Plataforma> listPlataformas = getFacade().findAll();
+        Collections.sort(listPlataformas, new CompararPlataformas());
+        return listPlataformas;
     }
 
     public List<Plataforma> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<Plataforma> listPlataformas = getFacade().findAll();
+        Collections.sort(listPlataformas, new CompararPlataformas());
+        return listPlataformas;
+    }
+
+    private class CompararPlataformas implements Comparator<Plataforma> {
+
+        @Override
+        public int compare(Plataforma o1, Plataforma o2) {
+            return o1.getPlataforma().compareTo(o2.getPlataforma());
+        }
     }
 
     @FacesConverter(forClass = Plataforma.class)

@@ -6,6 +6,8 @@ import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
 import com.furrias.catalogodevideojuegos.sessionBean.UbicacionFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,6 +79,7 @@ public class UbicacionController implements Serializable {
     public List<Ubicacion> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+            Collections.sort(items, new CompararUbicaciones());
         }
         return items;
     }
@@ -114,11 +117,23 @@ public class UbicacionController implements Serializable {
     }
 
     public List<Ubicacion> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        List<Ubicacion> listUbicaciones = getFacade().findAll();
+        Collections.sort(listUbicaciones, new CompararUbicaciones());
+        return listUbicaciones;
     }
 
     public List<Ubicacion> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<Ubicacion> listUbicaciones = getFacade().findAll();
+        Collections.sort(listUbicaciones, new CompararUbicaciones());
+        return listUbicaciones;
+    }
+
+    private class CompararUbicaciones implements Comparator<Ubicacion> {
+
+        @Override
+        public int compare(Ubicacion o1, Ubicacion o2) {
+            return o1.getUbicacion().compareTo(o2.getUbicacion());
+        }
     }
 
     @FacesConverter(forClass = Ubicacion.class)

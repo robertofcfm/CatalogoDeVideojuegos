@@ -18,6 +18,7 @@
                 <p:dataTable id="datalist" value="#{sagaController.items}" var="item"
                              selectionMode="single" selection="#{sagaController.selected}"
                              paginator="true"
+                             sortBy="#{item.saga}"
                              rowKey="#{item.idSaga}"
                              rows="10"
                              rowsPerPageTemplate="10,20,30,40,50"

@@ -6,6 +6,8 @@ import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
 import com.furrias.catalogodevideojuegos.sessionBean.SagaFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,6 +79,7 @@ public class SagaController implements Serializable {
     public List<Saga> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+            Collections.sort(items, new CompararSagas());
         }
         return items;
     }
@@ -114,11 +117,23 @@ public class SagaController implements Serializable {
     }
 
     public List<Saga> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        List<Saga> listSagas = getFacade().findAll();
+        Collections.sort(listSagas, new CompararSagas());
+        return listSagas;
     }
 
     public List<Saga> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<Saga> listSagas = getFacade().findAll();
+        Collections.sort(listSagas, new CompararSagas());
+        return listSagas;
+    }
+
+    private class CompararSagas implements Comparator<Saga> {
+
+        @Override
+        public int compare(Saga o1, Saga o2) {
+            return o1.getSaga().compareTo(o2.getSaga());
+        }
     }
 
     @FacesConverter(forClass = Saga.class)

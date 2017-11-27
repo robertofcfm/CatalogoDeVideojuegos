@@ -22,7 +22,7 @@
                             <f:selectItems value="#{sagaController.itemsAvailableSelectOne}"
                                            var="sagaidSagaItem"
                                            itemLabel="#{sagaidSagaItem.saga}"
-                                           itemValue="#{sagaidSagaItem.saga}"/>
+                                           itemValue="#{sagaidSagaItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_numJugadores}" for="numJugadores" />
                         <p:inputText id="numJugadores" value="#{videojuegoController.selected.numJugadores}" title="#{bundle.CreateVideojuegoTitle_numJugadores}" />
@@ -32,7 +32,7 @@
                             <f:selectItems value="#{divisionController.itemsAvailableSelectOne}"
                                            var="idDesarrolladorItem"
                                            itemLabel="#{idDesarrolladorItem.division}"
-                                           itemValue="#{idDesarrolladorItem.division}"/>
+                                           itemValue="#{idDesarrolladorItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_idDistribuidor}" for="idDistribuidor" />
                         <p:selectOneMenu id="idDistribuidor" value="#{videojuegoController.selected.idDistribuidor}" >
@@ -40,7 +40,7 @@
                             <f:selectItems value="#{divisionController.itemsAvailableSelectOne}"
                                            var="idDistribuidorItem"
                                            itemLabel="#{idDistribuidorItem.division}"
-                                           itemValue="#{idDistribuidorItem.division}"/>
+                                           itemValue="#{idDistribuidorItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_lanzamiento}" for="lanzamiento" />
                         <p:inputText id="lanzamiento" value="#{videojuegoController.selected.lanzamiento}" title="#{bundle.CreateVideojuegoTitle_lanzamiento}" />
@@ -50,7 +50,7 @@
                             <f:selectItems value="#{ubicacionController.itemsAvailableSelectOne}"
                                            var="ubicacionidUbicacionItem"
                                            itemLabel="#{ubicacionidUbicacionItem.ubicacion}"
-                                           itemValue="#{ubicacionidUbicacionItem.ubicacion}"/>
+                                           itemValue="#{ubicacionidUbicacionItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_estadoidEstado}" for="estadoidEstado" />
                         <p:selectOneMenu id="estadoidEstado" value="#{videojuegoController.selected.estadoidEstado}" required="true" requiredMessage="#{bundle.EditVideojuegoRequiredMessage_estadoidEstado}">
@@ -58,7 +58,7 @@
                             <f:selectItems value="#{estadoController.itemsAvailableSelectOne}"
                                            var="estadoidEstadoItem"
                                            itemLabel="#{estadoidEstadoItem.estado}"
-                                           itemValue="#{estadoidEstadoItem.estado}"/>
+                                           itemValue="#{estadoidEstadoItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{videojuegoController.create}" value="#{bundle.Save}" update="display,:VideojuegoListForm:datalist,:growl" oncomplete="handleSubmit(args,'VideojuegoCreateDialog');"/>
