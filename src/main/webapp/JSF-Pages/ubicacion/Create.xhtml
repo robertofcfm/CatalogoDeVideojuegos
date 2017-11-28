@@ -15,7 +15,7 @@
                         <p:outputLabel value="#{bundle.CreateUbicacionLabel_idUbicacion}" for="idUbicacion" rendered="false"/>
                         <p:inputText id="idUbicacion" value="#{ubicacionController.selected.idUbicacion}" title="#{bundle.CreateUbicacionTitle_idUbicacion}" required="true" requiredMessage="#{bundle.CreateUbicacionRequiredMessage_idUbicacion}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateUbicacionLabel_ubicacion}" for="ubicacion" />
-                        <p:inputText id="ubicacion" value="#{ubicacionController.selected.ubicacion}" title="#{bundle.CreateUbicacionTitle_ubicacion}" />
+                        <p:inputText id="ubicacion" value="#{ubicacionController.selected.ubicacion}" title="#{bundle.CreateUbicacionTitle_ubicacion}"  required="true" requiredMessage="#{bundle.CreateUbicacionRequiredMessage_Ubicacion}"/>
                         <p:outputLabel value="#{bundle.CreateUbicacionLabel_plataformaidPlataforma}" for="plataformaidPlataforma" />
                         <p:selectOneMenu id="plataformaidPlataforma" value="#{ubicacionController.selected.plataformaidPlataforma}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
