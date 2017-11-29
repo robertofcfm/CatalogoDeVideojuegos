@@ -26,14 +26,10 @@
                     <div class="contenido">
                         <ui:repeat value="${menuController.menu}" var="item">
                             <div class = "marcoFoto zoom">
-                                <div class="contenidoFoto">
-                                    <h:link outcome="${item.link}">
-                                        <div class="contenidoFoto">
-                                            <img src="${item.imagen}"/>
-                                            <div class="nombreFoto">${item.nombre}</div>
-                                        </div>
-                                    </h:link>
-                                </div>
+                                <h:link outcome="${item.link}">
+                                    <img src="${item.imagen}"/>
+                                    <h:outputText value="${item.nombre}"></h:outputText>
+                                </h:link>
                             </div>
                         </ui:repeat>
                     </div>

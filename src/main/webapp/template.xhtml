@@ -3,12 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="jquery-ui.css"/>
         <h:outputScript library="js" name="jsfcrud.js"/>
+        <h:outputScript library="js" name="jquery-ui.js"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     </h:head>
@@ -20,9 +23,25 @@
         <p:layout fullPage="true">
             <p:layoutUnit position="north" styleClass="layoutEncabezado">
                 <div class="encabezado">
-                    <i class="fa fa-gamepad elementoEncabezado" aria-hidden="true"></i>
-                    <h:outputText class="elementoEncabezado" value="#{bundle.AppName}"></h:outputText>
-                    <div class="elementoEncabezadoIzq"> <ui:insert name="title"/></div>
+                    <h:form styleClass="formMenu">
+                        <p:menubar>
+                            <p:menuitem  value="#{bundle.Home}" outcome="/index" icon="ui-icon-home" />
+                            <p:submenu label="#{bundle.Maintenance}">
+                                <p:menuitem value="Compania" outcome="/JSF-Pages/compania/List.xhtml" />
+                                <p:menuitem value="Division" outcome="/JSF-Pages/division/List.xhtml" />
+                                <p:menuitem value="Estado" outcome="/JSF-Pages/estado/List.xhtml" />
+                                <p:menuitem value="Etiqueta" outcome="/JSF-Pages/etiqueta/List.xhtml" />
+                                <p:menuitem value="Grupoetiqueta" outcome="/JSF-Pages/grupoetiqueta/List.xhtml" />
+                                <p:menuitem value="Plataforma" outcome="/JSF-Pages/plataforma/List.xhtml" />
+                                <p:menuitem value="Saga" outcome="/JSF-Pages/saga/List.xhtml" />
+                                <p:menuitem value="Ubicacion" outcome="/JSF-Pages/ubicacion/List.xhtml" />
+                                <p:menuitem value="Videojuego" outcome="/JSF-Pages/videojuego/List.xhtml" />
+                            </p:submenu>
+                            <p:menuitem styleClass="menuTitulo">
+                                <ui:insert name="title"/>
+                            </p:menuitem>
+                        </p:menubar>
+                    </h:form>
                 </div>
             </p:layoutUnit>
 

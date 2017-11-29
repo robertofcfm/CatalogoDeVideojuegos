@@ -25,7 +25,7 @@
                                            itemValue="#{sagaidSagaItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_numJugadores}" for="numJugadores" />
-                        <p:inputText id="numJugadores" value="#{videojuegoController.selected.numJugadores}" title="#{bundle.CreateVideojuegoTitle_numJugadores}" />
+                        <p:spinner min="0" id="numJugadores" value="#{videojuegoController.selected.numJugadores}" title="#{bundle.CreateVideojuegoTitle_numJugadores}" />
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_idDesarrollador}" for="idDesarrollador" />
                         <p:selectOneMenu id="idDesarrollador" value="#{videojuegoController.selected.idDesarrollador}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -43,7 +43,7 @@
                                            itemValue="#{idDistribuidorItem}"/>
                         </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_lanzamiento}" for="lanzamiento" />
-                        <p:inputText id="lanzamiento" value="#{videojuegoController.selected.lanzamiento}" title="#{bundle.CreateVideojuegoTitle_lanzamiento}" />
+                        <p:spinner min="1970" id="lanzamiento" value="#{videojuegoController.selected.lanzamiento}" title="#{bundle.CreateVideojuegoTitle_lanzamiento}" />
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_ubicacionidUbicacion}" for="ubicacionidUbicacion" />
                         <p:selectOneMenu id="ubicacionidUbicacion" value="#{videojuegoController.selected.ubicacionidUbicacion}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>

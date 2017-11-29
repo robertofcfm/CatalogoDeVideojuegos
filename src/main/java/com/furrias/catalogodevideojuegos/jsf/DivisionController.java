@@ -6,6 +6,8 @@ import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
 import com.furrias.catalogodevideojuegos.sessionBean.DivisionFacade;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -77,6 +79,7 @@ public class DivisionController implements Serializable {
     public List<Division> getItems() {
         if (items == null) {
             items = getFacade().findAll();
+            Collections.sort(items, new CompararDivisiones());
         }
         return items;
     }
@@ -114,11 +117,23 @@ public class DivisionController implements Serializable {
     }
 
     public List<Division> getItemsAvailableSelectMany() {
-        return getFacade().findAll();
+        List<Division> listDivisiones = getFacade().findAll();
+        Collections.sort(listDivisiones, new CompararDivisiones());
+        return listDivisiones;
     }
 
     public List<Division> getItemsAvailableSelectOne() {
-        return getFacade().findAll();
+        List<Division> listDivisiones = getFacade().findAll();
+        Collections.sort(listDivisiones, new CompararDivisiones());
+        return listDivisiones;
+    }
+
+    private class CompararDivisiones implements Comparator<Division> {
+
+        @Override
+        public int compare(Division o1, Division o2) {
+            return o1.getDivision().compareTo(o2.getDivision());
+        }
     }
 
     @FacesConverter(forClass = Division.class)
