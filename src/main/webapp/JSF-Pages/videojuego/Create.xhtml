@@ -16,14 +16,6 @@
                         <p:inputText id="idVideojuego" value="#{videojuegoController.selected.idVideojuego}" title="#{bundle.CreateVideojuegoTitle_idVideojuego}" required="true" requiredMessage="#{bundle.CreateVideojuegoRequiredMessage_idVideojuego}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_videojuego}" for="videojuego" />
                         <p:inputText id="videojuego" value="#{videojuegoController.selected.videojuego}" title="#{bundle.CreateVideojuegoTitle_videojuego}" required="true" requiredMessage="#{bundle.CreateVideojuegoRequiredMessage_videojuego}"/>
-                        <p:outputLabel value="#{bundle.CreateVideojuegoLabel_sagaidSaga}" for="sagaidSaga" />
-                        <p:selectOneMenu id="sagaidSaga" value="#{videojuegoController.selected.sagaidSaga}" >
-                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
-                            <f:selectItems value="#{sagaController.itemsAvailableSelectOne}"
-                                           var="sagaidSagaItem"
-                                           itemLabel="#{sagaidSagaItem.saga}"
-                                           itemValue="#{sagaidSagaItem}"/>
-                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_numJugadores}" for="numJugadores" />
                         <p:spinner min="0" id="numJugadores" value="#{videojuegoController.selected.numJugadores}" title="#{bundle.CreateVideojuegoTitle_numJugadores}" />
                         <p:outputLabel value="#{bundle.CreateVideojuegoLabel_idDesarrollador}" for="idDesarrollador" />

@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -46,7 +47,7 @@ public class Saga implements Serializable {
     @Size(min = 1, max = 300)
     @Column(name = "Saga")
     private String saga;
-    @OneToMany(mappedBy = "sagaidSaga")
+    @ManyToMany(mappedBy = "sagaList")
     private List<Videojuego> videojuegoList;
 
     public Saga() {
@@ -110,5 +111,5 @@ public class Saga implements Serializable {
     public String toString() {
         return "com.furrias.catalogodevideojuegos.entidad.Saga[ idSaga=" + idSaga + " ]";
     }
-    
+
 }

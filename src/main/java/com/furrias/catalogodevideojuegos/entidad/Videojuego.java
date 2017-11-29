@@ -70,9 +70,13 @@ public class Videojuego implements Serializable {
     @JoinColumn(name = "Estado_idEstado", referencedColumnName = "idEstado")
     @ManyToOne(optional = false)
     private Estado estadoidEstado;
-    @JoinColumn(name = "Saga_idSaga", referencedColumnName = "idSaga")
-    @ManyToOne
-    private Saga sagaidSaga;
+
+    @JoinTable(name = "videojuego_has_saga", joinColumns = {
+        @JoinColumn(name = "Videojuego_idVideojuego", referencedColumnName = "idVideojuego")}, inverseJoinColumns = {
+        @JoinColumn(name = "Saga_idSaga", referencedColumnName = "idSaga")})
+    @ManyToMany
+    private List<Saga> sagaList;
+
     @JoinColumn(name = "Ubicacion_idUbicacion", referencedColumnName = "idUbicacion")
     @ManyToOne
     private Ubicacion ubicacionidUbicacion;
@@ -154,12 +158,13 @@ public class Videojuego implements Serializable {
         this.estadoidEstado = estadoidEstado;
     }
 
-    public Saga getSagaidSaga() {
-        return sagaidSaga;
+    @XmlTransient
+    public List<Saga> getSagaList() {
+        return sagaList;
     }
 
-    public void setSagaidSaga(Saga sagaidSaga) {
-        this.sagaidSaga = sagaidSaga;
+    public void setSagaList(List<Saga> sagaList) {
+        this.sagaList = sagaList;
     }
 
     public Ubicacion getUbicacionidUbicacion() {

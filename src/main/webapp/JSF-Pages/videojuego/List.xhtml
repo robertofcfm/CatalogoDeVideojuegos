@@ -46,12 +46,15 @@
                         </f:facet>
                         <h:outputText value="#{item.videojuego}"/>
                     </p:column>
-                    <p:column sortBy="#{item.sagaidSaga.saga}" filterBy="#{item.sagaidSaga.saga}" filterMatchMode="contains">
+                    <p:column sortBy="#{videojuegoController.filtrarSagas(item.sagaList)}"  filterBy="#{videojuegoController.filtrarSagas(item.sagaList)}" filterMatchMode="contains">
                         <f:facet name="header">
-                            <h:outputText value="#{bundle.ListVideojuegoTitle_sagaidSaga}"/>
+                            <i class="fa fa-tags" aria-hidden="true"></i>
+                            <h:outputText value="#{bundle.ListSagaTitle_saga}"/>
                         </f:facet>
-                        <h:outputText value="#{item.sagaidSaga.saga}"/>
-                    </p:column>
+                        <p:repeat value="#{item.sagaList}" var="varSaga">
+                            <h:outputText value="#{varSaga.saga}"/><br/>
+                        </p:repeat>
+                    </p:column> 
                     <p:column sortBy="#{item.numJugadores}" filterBy="#{item.numJugadores}" filterMatchMode="contains">
                         <f:facet name="header">
                             <i class="fa fa-users" aria-hidden="true"></i>

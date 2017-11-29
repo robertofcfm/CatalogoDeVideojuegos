@@ -136,7 +136,7 @@ public class SagaController implements Serializable {
         }
     }
 
-    @FacesConverter(forClass = Saga.class)
+    @FacesConverter(forClass = Saga.class, value = "converterSaga")
     public static class SagaControllerConverter implements Converter {
 
         @Override

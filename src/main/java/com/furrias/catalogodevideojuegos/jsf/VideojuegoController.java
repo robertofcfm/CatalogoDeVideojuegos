@@ -1,6 +1,7 @@
 package com.furrias.catalogodevideojuegos.jsf;
 
 import com.furrias.catalogodevideojuegos.entidad.Etiqueta;
+import com.furrias.catalogodevideojuegos.entidad.Saga;
 import com.furrias.catalogodevideojuegos.entidad.Videojuego;
 import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil;
 import com.furrias.catalogodevideojuegos.jsf.util.JsfUtil.PersistAction;
@@ -98,6 +99,22 @@ public class VideojuegoController implements Serializable {
             Collections.sort(items, new CompararVideojuegos());
         }
         return items;
+    }
+    
+        public String filtrarSagas(List<Saga> varSagas) {
+        String resultado = "";
+        for (Saga elemento : varSagas) {
+            resultado += " " + elemento.getSaga();
+        }
+        return resultado;
+    }
+
+    public String ordenarSagas(List<Saga> varSagas) {
+        String resultado = "";
+        for (Saga elemento : varSagas) {
+            resultado += " " + elemento.getSaga();
+        }
+        return resultado;
     }
 
     public String filtrarEtiquetas(List<Etiqueta> varEtiquetas) {
