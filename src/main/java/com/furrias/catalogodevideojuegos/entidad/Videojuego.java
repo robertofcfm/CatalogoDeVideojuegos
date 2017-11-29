@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -54,8 +55,12 @@ public class Videojuego implements Serializable {
     private Integer numJugadores;
     @Column(name = "Lanzamiento")
     private Integer lanzamiento;
-    @ManyToMany(mappedBy = "videojuegoList")
+    @JoinTable(name = "videojuego_has_etiqueta", joinColumns = {
+        @JoinColumn(name = "Videojuego_idVideojuego", referencedColumnName = "idVideojuego")}, inverseJoinColumns = {
+        @JoinColumn(name = "Etiqueta_idEtiqueta", referencedColumnName = "idEtiqueta")})
+    @ManyToMany
     private List<Etiqueta> etiquetaList;
+
     @JoinColumn(name = "idDistribuidor", referencedColumnName = "idDivision")
     @ManyToOne
     private Division idDistribuidor;
@@ -189,5 +194,5 @@ public class Videojuego implements Serializable {
     public String toString() {
         return "com.furrias.catalogodevideojuegos.entidad.Videojuego[ idVideojuego=" + idVideojuego + " ]";
     }
-    
+
 }

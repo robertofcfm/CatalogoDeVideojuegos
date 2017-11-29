@@ -26,10 +26,12 @@
                              emptyMessage="#{bundle.ListVideojuegoEmpty}"
                              draggableColumns="true"
                              scrollable="true" scrollWidth="100%" scrollHeight="100%"
+                             first="#{videojuegoController.first}"
                              >
 
                     <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                     <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:ajax event="page" listener="#{videojuegoController.onPageChange}"/>
 
                     <p:column rendered="false">
                         <f:facet name="header">

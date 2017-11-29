@@ -48,10 +48,7 @@ public class Etiqueta implements Serializable {
     @Size(min = 1, max = 300)
     @Column(name = "Etiqueta")
     private String etiqueta;
-    @JoinTable(name = "videojuego_has_etiqueta", joinColumns = {
-        @JoinColumn(name = "Etiqueta_idEtiqueta", referencedColumnName = "idEtiqueta")}, inverseJoinColumns = {
-        @JoinColumn(name = "Videojuego_idVideojuego", referencedColumnName = "idVideojuego")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "etiquetaList")
     private List<Videojuego> videojuegoList;
     @JoinTable(name = "etiqueta_has_grupoetiqueta", joinColumns = {
         @JoinColumn(name = "Etiqueta_idEtiqueta", referencedColumnName = "idEtiqueta")}, inverseJoinColumns = {
@@ -129,5 +126,5 @@ public class Etiqueta implements Serializable {
     public String toString() {
         return "com.furrias.catalogodevideojuegos.entidad.Etiqueta[ idEtiqueta=" + idEtiqueta + " ]";
     }
-    
+
 }

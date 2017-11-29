@@ -21,6 +21,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import org.primefaces.component.datatable.DataTable;
+import org.primefaces.event.data.PageEvent;
 
 @Named("videojuegoController")
 @SessionScoped
@@ -30,7 +32,20 @@ public class VideojuegoController implements Serializable {
     private com.furrias.catalogodevideojuegos.sessionBean.VideojuegoFacade ejbFacade;
     private List<Videojuego> items = null;
     private Videojuego selected;
+    protected int first = 0;
 
+    public void onPageChange(PageEvent event) {
+        this.setFirst(((DataTable) event.getSource()).getFirst());
+    }
+
+    public int getFirst() {
+        return first;
+    }
+    
+    public void setFirst(int first){
+        this.first = first;
+    }
+    
     public VideojuegoController() {
     }
 
