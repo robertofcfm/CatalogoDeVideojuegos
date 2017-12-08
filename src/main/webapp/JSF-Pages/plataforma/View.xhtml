@@ -8,7 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="PlataformaViewDlg" widgetVar="PlataformaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPlataformaTitle}">
+        <p:dialog id="PlataformaViewDlg" widgetVar="PlataformaViewDialog" modal="true" hideEffect="explode" resizable="false" appendTo="@(body)" header="#{bundle.ViewPlataformaTitle}">
             <h:form id="PlataformaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{plataformaController.selected != null}">
@@ -17,7 +17,7 @@
                         <h:outputText value="#{bundle.ViewPlataformaLabel_plataforma}"/>
                         <h:outputText value="#{plataformaController.selected.plataforma}" title="#{bundle.ViewPlataformaTitle_plataforma}"/>
                         <h:outputText value="#{bundle.ViewPlataformaLabel_companiaidCompania}"/>
-                        <h:outputText value="#{plataformaController.selected.companiaidCompania}" title="#{bundle.ViewPlataformaTitle_companiaidCompania}"/>
+                        <h:outputText value="#{plataformaController.selected.companiaidCompania.compania}" title="#{bundle.ViewPlataformaTitle_companiaidCompania}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="PlataformaViewDialog.hide()" rendered="false"/>
                 </h:panelGroup>

@@ -8,7 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="GrupoetiquetaViewDlg" widgetVar="GrupoetiquetaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewGrupoetiquetaTitle}">
+        <p:dialog id="GrupoetiquetaViewDlg" widgetVar="GrupoetiquetaViewDialog" modal="true" hideEffect="explode" resizable="false" appendTo="@(body)" header="#{bundle.ViewGrupoetiquetaTitle}">
             <h:form id="GrupoetiquetaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{grupoetiquetaController.selected != null}">

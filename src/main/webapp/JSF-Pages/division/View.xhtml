@@ -8,7 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="DivisionViewDlg" widgetVar="DivisionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDivisionTitle}">
+        <p:dialog id="DivisionViewDlg" widgetVar="DivisionViewDialog" modal="true" hideEffect="explode" resizable="false" appendTo="@(body)" header="#{bundle.ViewDivisionTitle}">
             <h:form id="DivisionViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{divisionController.selected != null}">

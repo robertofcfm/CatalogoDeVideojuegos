@@ -39,19 +39,6 @@ a.ui-paginator-last.ui-state-default.ui-corner-all > span{
     height: 0;
 }
 
-span.ui-sortable-column-icon.ui-icon.ui-icon.ui-icon-carat-2-n-s.ui-icon-triangle-1-n:before{
-    position: absolute;
-    font-family: FontAwesome;
-    content: "\f00c"; //Code FA 
-    background-color: black!important;
-}
-
-span.ui-sortable-column-icon.ui-icon.ui-icon.ui-icon-carat-2-n-s.ui-icon-triangle-1-s:before{
-    position: absolute;
-    font-family: FontAwesome;
-    content: "\f00c"; //Code FA 
-}
-
 .ui-chkbox-box.ui-widget.ui-corner-all.ui-state-default:before{
     position: absolute;
     font-family: FontAwesome;
@@ -161,195 +148,25 @@ a.ui-button:focus,
     background-image: none;
 }
 
-
-
-
-
-/*
-
- Interaction states
-----------------------------------
-.ui-button,
-html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active {
-  color: #000 !important;
-  background-color: #f3f4fb !important;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
-  font-weight: normal;
+.ui-dialog-titlebar{
+    overflow: hidden;
+    .color-darcula;
 }
 
-   hover de tabla y elementos de combos y listas     
-.ui-state-hover,
-.ui-widget-content .ui-state-hover,
-.ui-widget-header .ui-state-hover,
-.ui-state-focus,
-.ui-widget-content .ui-state-focus,
-.ui-widget-header .ui-state-focus,
-.ui-button:hover,
-.ui-button:focus,
-.ui-button:hover,
-.ui-button:focus {
-  color: #000 !important;
-  background-color: #f3f4fb !important;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
-  font-weight: normal;
-}
-.ui-state-hover a,
-.ui-state-hover a:hover,
-.ui-state-hover a:link,
-.ui-state-hover a:visited,
-.ui-state-focus a,
-.ui-state-focus a:hover,
-.ui-state-focus a:link,
-.ui-state-focus a:visited,
-a.ui-button:hover,
-a.ui-button:focus,
-.ui-columntoggler-item:hover,
-.w3-bar-item:hover {
-  color: #000 !important;
-  background-color: #f3f4fb !important;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
-  font-weight: normal;
-  text-decoration: none;
-}
+.ui-dialog-content{
+    .color-text-darcula;
+} 
 
-     style de pagina actual, caja de check header de columna de tabla       
-.ui-state-active,
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active,
-a.ui-button:active,
-.ui-button:active,
-.ui-button.ui-state-active:hover {
-  color: #fff !important;
-  background-color: #20295b !important;
-}
-
- Interaction Cues
-----------------------------------
-elemento seleccionado en tabla,
-o lista .ui-state-highlight,
-.ui-widget-content .ui-state-highlight,
-.ui-widget-header .ui-state-highlight,
-.ui-columntoggler-item:active {
-  color: #fff !important;
-  background-color: #3f51b5 !important;
-}
-.ui-state-checked {
-  color: #fff !important;
-  background-color: #3f51b5 !important;
-}
-.ui-state-highlight a,
-.ui-widget-content .ui-state-highlight a,
-.ui-widget-header .ui-state-highlight a {
-  color: #fff !important;
-  background-color: #3f51b5 !important;
-}
-.ui-priority-primary,
-.ui-widget-content .ui-priority-primary,
-.ui-widget-header .ui-priority-primary {
-  font-weight: bold;
-}
-.ui-priority-secondary,
-.ui-widget-content .ui-priority-secondary,
-.ui-widget-header .ui-priority-secondary {
-  opacity: .7;
-  filter: alpha(opacity=70);
-  font-weight: normal;
-}
-.ui-state-disabled,
-.ui-widget-content .ui-state-disabled,
-.ui-widget-header .ui-state-disabled {
-  opacity: .35;
-  filter: alpha(opacity=35);
-  background-image: none;
-}
-.ui-state-disabled .ui-icon {
-  filter: alpha(opacity=35);
-}
-  iconos      
 .ui-dialog-titlebar-icon:before {
-  font-family: FontAwesome;
-  content: "\f00d";
-}
-.ui-dialog-titlebar-icon:hover {
-  color: #000 !important;
-  background-color: #f3f4fb !important;
-  background-color: inherit !important;
-  box-shadow: none !important;
-}
-.ui-paginator-first,
-.ui-paginator-prev,
-.ui-paginator-page,
-.ui-paginator-next,
-.ui-paginator-last {
-  border: none;
-  display: inline-block;
-  outline: 0;
-  padding: 8px 16px;
-  vertical-align: middle;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  background-color: inherit;
-  text-align: center;
-  cursor: pointer;
-  white-space: nowrap;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  .w3-circle;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
-}
-a.ui-paginator-first.ui-state-default.ui-corner-all > span,
-a.ui-paginator-prev.ui-state-default.ui-corner-all > span,
-a.ui-paginator-next.ui-state-default.ui-corner-all > span,
-a.ui-paginator-last.ui-state-default.ui-corner-all > span {
-  height: 0;
-}
-.ui-chkbox-box.ui-widget.ui-corner-all.ui-state-default:before {
-  position: absolute;
-  font-family: FontAwesome;
-  content: "\f00c";
-}
-a.ui-paginator-prev:before {
-  font-family: FontAwesome;
-  content: "\f100";
-}
-a.ui-paginator-first:before {
-  font-family: FontAwesome;
-  content: "\f104";
-}
-a.ui-paginator-next:before {
-  font-family: FontAwesome;
-  content: "\f101";
-}
-a.ui-paginator-last:before {
-  font-family: FontAwesome;
-  content: "\f105";
-}
-  iconos fin      
-.ui-state-hover a:link,
-.ui-state-hover a:visited,
-.ui-state-focus a,
-.ui-state-focus a:hover,
-.ui-state-focus a:link,
-.ui-state-focus a:visited,
-a.ui-button:hover,
-a.ui-button:focus {
-  box-shadow: none !important;
+    font-family: FontAwesome;
+    content: "\f00d"; //Code FA 
 }
 
-a {
-  text-decoration: none;
+.ui-dialog-titlebar-icon, .ui-dialog-titlebar-icon:hover{
+    background-color: inherit !important;
+    color: inherit !important;
 }
 
-*/
-
-
-
-
-
-
+.ui-panelgrid td, .ui-panelgrid tr{
+    border:none!important;
+}

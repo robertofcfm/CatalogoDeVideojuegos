@@ -17,7 +17,9 @@
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_videojuego}"/>
                         <h:outputText value="#{videojuegoController.selected.videojuego}" title="#{bundle.ViewVideojuegoTitle_videojuego}"/>
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_sagaidSaga}"/>
-                        <h:outputText value="#{videojuegoController.selected.sagaidSaga.saga}" title="#{bundle.ViewVideojuegoTitle_sagaidSaga}"/>
+                        <p:repeat value="#{videojuegoController.selected.sagaList}" var="varSaga">
+                            <h:outputText value="#{varSaga.saga}"/><br/>
+                        </p:repeat>
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_numJugadores}"/>
                         <h:outputText value="#{videojuegoController.selected.numJugadores}" title="#{bundle.ViewVideojuegoTitle_numJugadores}"/>
                         <h:outputText value="#{bundle.ViewVideojuegoLabel_idDesarrollador}"/>

@@ -8,7 +8,7 @@
 
     <ui:composition>
 
-        <p:dialog id="SagaViewDlg" widgetVar="SagaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewSagaTitle}">
+        <p:dialog id="SagaViewDlg" widgetVar="SagaViewDialog" modal="true" hideEffect="explode" resizable="false" appendTo="@(body)" header="#{bundle.ViewSagaTitle}">
             <h:form id="SagaViewForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{sagaController.selected != null}">
