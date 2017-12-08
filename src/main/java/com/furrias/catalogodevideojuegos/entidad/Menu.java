@@ -11,7 +11,7 @@ package com.furrias.catalogodevideojuegos.entidad;
  */
 public class Menu {
 
-    private String link = null;
+    private String outcome = null;
     private String imagen = null;
     private String nombre = null;
 
@@ -19,23 +19,23 @@ public class Menu {
      * Creates a new instance of Menu
      */
     public Menu() {
-        link = "";
-        imagen = "";
+        outcome = "";
         nombre = "";
+        imagen = "";
     }
 
-    public Menu(String link, String imagen, String nombre) {
-        this.link = link;
-        this.imagen = imagen;
+    public Menu(String outcome, String nombre, String imagen) {
+        this.outcome = outcome;
         this.nombre = nombre;
+        this.imagen = imagen;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setOutcome(String outcome) {
+        this.outcome = outcome;
     }
 
-    public String getLink() {
-        return link;
+    public String getOutcome() {
+        return outcome;
     }
 
     public void setImagen(String imagen) {

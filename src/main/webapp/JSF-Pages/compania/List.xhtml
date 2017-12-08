@@ -14,20 +14,23 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="CompaniaListForm" class="formTable" >
+            <h:form id="CompaniaListForm" class="formTable" style="height: 95%;width: 100%;">
                 <p:dataTable id="datalist" value="#{companiaController.items}" var="item"
                              selectionMode="single" selection="#{companiaController.selected}"
                              paginator="true"
-                             widgetVar="tabla"
-                             emptyMessage="#{bundle.ListCompaniaEmpty}"
-                             reflow="true" liveResize="true"
-                             resizableColumns="true" resizeMode="expand"
-                             draggableColumns="true"
-                             scrollable="true" scrollWidth="100%" scrollHeight="100%"
                              sortBy="#{item.compania}"
                              rowKey="#{item.idCompania}"
                              rows="10"
                              rowsPerPageTemplate="10,20,30,40,50"
+                             widgetVar="tabla"
+                             reflow="true" liveResize="true"
+                             resizableColumns="true" resizeMode="expand"
+                             emptyMessage="#{bundle.ListCompaniaEmpty}"
+                             scrollable="true" scrollHeight="99%"
+                             styleClass="dataTable border bordered"
+                             paginatorTemplate="{CurrentPageReport}  
+                             {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                             currentPageReportTemplate="(Registros: {startRecord} - {endRecord} of {totalRecords}, Pagina: {currentPage}/{totalPages})"
                              >
 
                     <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
@@ -46,32 +49,38 @@
                         <h:outputText value="#{item.compania}"/>
                     </p:column>
                     <f:facet name="footer">
-                        <div name="footer-left" class="footer-left">
-                            <i class="fa fa-filter" aria-hidden="true"></i>
-                            <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
-                            <h:commandLink>
-                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
-                                <p:dataExporter type="xls" target="datalist" fileName="companias"/>
-                            </h:commandLink>
-                            <h:commandLink>
-                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                <p:dataExporter type="csv" target="datalist" fileName="companias"/>
-                            </h:commandLink>
-                            <h:commandLink>
-                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                <p:dataExporter type="pdf" target="datalist" fileName="companias"/>
-                            </h:commandLink>
-                            <h:commandLink>
-                                <i class="fa fa-file-code-o" aria-hidden="true"></i>
-                                <p:dataExporter type="xml" target="datalist" fileName="companias"/>
-                            </h:commandLink>
+                        <div class="place-left">
+                            <div class="input-control text" data-role="input">
+                                <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
+                                <button class="button" disabled="true"><span class="mif-filter"></span></button>
+                            </div>
                         </div>
-                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{companiaController.prepareCreate}" update=":CompaniaCreateForm" oncomplete="PF('CompaniaCreateDialog').show()"/>
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CompaniaViewForm" oncomplete="PF('CompaniaViewDialog').show()" disabled="#{empty companiaController.selected}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CompaniaEditForm" oncomplete="PF('CompaniaEditDialog').show()" disabled="#{empty companiaController.selected}"/>
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{companiaController.destroy}" update=":growl,datalist" disabled="#{empty companiaController.selected}"/>
-                        <div name="header-right" class="header-right" >
-                            <p:commandButton id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                        <p:commandButton styleClass="button color-darcula" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{companiaController.prepareCreate}" update=":CompaniaCreateForm" oncomplete="PF('CompaniaCreateDialog').show()"/>
+                        <p:commandButton styleClass="button color-darcula" id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":CompaniaViewForm" oncomplete="PF('CompaniaViewDialog').show()" disabled="#{empty companiaController.selected}"/>
+                        <p:commandButton styleClass="button color-darcula" id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":CompaniaEditForm" oncomplete="PF('CompaniaEditDialog').show()" disabled="#{empty companiaController.selected}"/>
+                        <p:commandButton styleClass="button color-darcula" id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{companiaController.destroy}" update=":growl,datalist" disabled="#{empty companiaController.selected}"/>
+                        <div class="place-right">
+                            <div style="margin-right:30px; display: inline;">
+                                <ul class="t-menu horizontal compact darcula">
+                                    <li><h:commandLink>
+                                            <span class="mif-file-excel"></span>
+                                            <p:dataExporter type="xls" target="datalist" fileName="companias"/>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink>
+                                            <span class="mif-file-text"></span>
+                                            <p:dataExporter type="csv" target="datalist" fileName="companias"/>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink>
+                                            <span class="mif-file-pdf"></span>
+                                            <p:dataExporter type="pdf" target="datalist" fileName="companias"/>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink>
+                                            <span class="mif-file-code"></span>
+                                            <p:dataExporter type="xml" target="datalist" fileName="companias"/>
+                                        </h:commandLink></li>    
+                                </ul>
+                            </div>
+                            <p:commandButton styleClass="button color-darcula" id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
                             <p:columnToggler datasource="datalist" trigger="toggler" />
                         </div>
                     </f:facet>

@@ -4,55 +4,61 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
-    <h:head>
-        <title><ui:insert name="title">Default Title</ui:insert></title>
-        <h:outputStylesheet library="css" name="jsfcrud.css"/>
-        <h:outputStylesheet library="css" name="jquery-ui.css"/>
-        <h:outputScript library="js" name="jsfcrud.js"/>
-        <h:outputScript library="js" name="jquery-ui.js"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"/>
+    <head jsf:id="head">
+
+        <link rel='shortcut icon' type='image/x-icon' jsf:name="favicon.ico" />
+
+        <title>#{bundle.AppName}</title>
+
+        <link jsf:name="css/metro.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/metro-colors.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/metro-schemes.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/metro-icons.min.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/metro-responsive.min.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/metro-rtl.min.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/metro-font-cdn.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    </h:head>
+        <link jsf:name="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/estiloPrincipal.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
 
-    <h:body>
+        <script jsf:target="body" jsf:name="metro.min.js" src="http://cdn.metroui.org.ua/js/metro.min.js"/>
+        <script jsf:target="body" jsf:name="jquery-ui.js"/>
+        <script jsf:target="body" jsf:name="jquery.dataTables.min.js"/>
+    </head>
+
+    <body jsf:id="body">
 
         <p:growl id="growl" life="3000" />
 
-        <p:layout fullPage="true">
-            <p:layoutUnit position="north" styleClass="layoutEncabezado">
-                <div class="encabezado">
-                    <h:form styleClass="formMenu">
-                        <p:menubar>
-                            <p:menuitem  value="#{bundle.Home}" outcome="/index" icon="ui-icon-home" />
-                            <p:submenu label="#{bundle.Maintenance}">
-                                <p:menuitem value="Compania" outcome="/JSF-Pages/compania/List.xhtml" />
-                                <p:menuitem value="Division" outcome="/JSF-Pages/division/List.xhtml" />
-                                <p:menuitem value="Estado" outcome="/JSF-Pages/estado/List.xhtml" />
-                                <p:menuitem value="Etiqueta" outcome="/JSF-Pages/etiqueta/List.xhtml" />
-                                <p:menuitem value="Grupoetiqueta" outcome="/JSF-Pages/grupoetiqueta/List.xhtml" />
-                                <p:menuitem value="Plataforma" outcome="/JSF-Pages/plataforma/List.xhtml" />
-                                <p:menuitem value="Saga" outcome="/JSF-Pages/saga/List.xhtml" />
-                                <p:menuitem value="Ubicacion" outcome="/JSF-Pages/ubicacion/List.xhtml" />
-                                <p:menuitem value="Videojuego" outcome="/JSF-Pages/videojuego/List.xhtml" />
-                            </p:submenu>
-                            <p:menuitem styleClass="menuTitulo">
-                                <ui:insert name="title"/>
-                            </p:menuitem>
-                        </p:menubar>
-                    </h:form>
+        <div class="app-bar fixed-top #{estiloController.appBarColor}" data-role="appbar">
+            <h:link outcome="Inicio" styleClass="app-bar-element branding">#{bundle.AppName}</h:link>
+            <span class="app-bar-divider"></span>
+            <ul class="app-bar-menu">
+                <li>
+                    <a href="" class="dropdown-toggle">#{bundle.Maintenance}</a>
+                    <ul class="d-menu" data-role="dropdown">
+                        <ui:repeat value="${menuController.menu}" var="item">
+                            <li><h:link outcome="#{item.outcome}">#{item.nombre}</h:link></li>
+                        </ui:repeat>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="page-content" style="height: 100%;width: 100%;">
+            <div class="flex-grid no-responsive-future" style="height: 100%;width: 100%;">
+                <div class="row" style="height: 100%; width: 100%; padding-left: 8px; padding-right: 8px;">
+                    <div class="cell auto-size bg-white" id="cell-content" style="width: 100%;height: 100%;padding-top:45px;">
+                        <ui:insert name="body"/>
+                    </div>
                 </div>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center" styleClass="layoutContenido">
-                <div class="contenido">
-                    <ui:insert name="body"/>
-                </div>
-            </p:layoutUnit>
-
-        </p:layout>
-
-    </h:body>
+            </div>
+        </div>
+    </body>
 
 </html>

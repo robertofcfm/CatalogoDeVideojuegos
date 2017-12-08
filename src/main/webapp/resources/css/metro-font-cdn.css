@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'metro';
+  src: url('http://cdn.metroui.org.ua/fonts/metro.eot');
+  src: url('http://cdn.metroui.org.ua/fonts/metro.eot') format('embedded-opentype'), 
+       url('http://cdn.metroui.org.ua/fonts/metro.woff') format('woff'), 
+       url('http://cdn.metroui.org.ua/fonts/metro.ttf') format('truetype'), 
+       url('http://cdn.metroui.org.ua/fonts/metro.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

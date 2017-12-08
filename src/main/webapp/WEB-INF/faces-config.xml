@@ -3,6 +3,52 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <navigation-rule>    
+        
+        <navigation-case>
+            <from-outcome>Videojuego</from-outcome>
+            <to-view-id>JSF-Pages/videojuego/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Inicio</from-outcome>
+            <to-view-id>index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Saga</from-outcome>
+            <to-view-id>JSF-Pages/saga/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Etiqueta</from-outcome>
+            <to-view-id>JSF-Pages/etiqueta/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>GrupoDeEtiquetas</from-outcome>
+            <to-view-id>JSF-Pages/grupoetiqueta/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Division</from-outcome>
+            <to-view-id>JSF-Pages/division/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Compañía</from-outcome>
+            <to-view-id>JSF-Pages/compania/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Ubicación</from-outcome>
+            <to-view-id>JSF-Pages/ubicacion/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Plataforma</from-outcome>
+            <to-view-id>JSF-Pages/plataforma/List.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>Estado</from-outcome>
+            <to-view-id>JSF-Pages/estado/List.xhtml</to-view-id>
+        </navigation-case>
+        
+    </navigation-rule>
+    
     <application>
         <resource-bundle>
             <base-name>/Bundle</base-name>

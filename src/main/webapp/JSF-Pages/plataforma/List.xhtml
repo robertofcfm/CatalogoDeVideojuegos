@@ -14,7 +14,7 @@
         </ui:define>
 
         <ui:define name="body">
-            <h:form id="PlataformaListForm" class="formTable">
+            <h:form id="PlataformaListForm" class="formTable" style="height: 95%;width: 100%;">
                 <p:dataTable id="datalist" value="#{plataformaController.items}" var="item"
                              selectionMode="single" selection="#{plataformaController.selected}"
                              paginator="true"
@@ -26,8 +26,11 @@
                              reflow="true" liveResize="true"
                              resizableColumns="true" resizeMode="expand"
                              emptyMessage="#{bundle.ListPlataformaEmpty}"
-                             draggableColumns="true"
-                             scrollable="true" scrollWidth="100%" scrollHeight="100%"
+                             scrollable="true" scrollHeight="99%"
+                             styleClass="dataTable border bordered"
+                             paginatorTemplate="{CurrentPageReport}  
+                             {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                             currentPageReportTemplate="(Registros: {startRecord} - {endRecord} of {totalRecords}, Pagina: {currentPage}/{totalPages})"
                              >
 
                     <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
@@ -52,32 +55,38 @@
                         <h:outputText value="#{item.companiaidCompania.compania}"/>
                     </p:column>
                     <f:facet name="footer">
-                        <div name="footer-left" class="footer-left">
-                            <i class="fa fa-filter" aria-hidden="true"></i>
-                            <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
-                            <h:commandLink>
-                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
-                                <p:dataExporter type="xls" target="datalist" fileName="plataformas"/>
-                            </h:commandLink>
-                            <h:commandLink>
-                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                <p:dataExporter type="csv" target="datalist" fileName="plataformas"/>
-                            </h:commandLink>
-                            <h:commandLink>
-                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                                <p:dataExporter type="pdf" target="datalist" fileName="plataformas"/>
-                            </h:commandLink>
-                            <h:commandLink>
-                                <i class="fa fa-file-code-o" aria-hidden="true"></i>
-                                <p:dataExporter type="xml" target="datalist" fileName="plataformas"/>
-                            </h:commandLink>
+                        <div class="place-left">
+                            <div class="input-control text" data-role="input">
+                                <p:inputText id="globalFilter" class="globalFilter" onkeyup="PF('tabla').filter()"/>
+                                <button class="button" disabled="true"><span class="mif-filter"></span></button>
+                            </div>
                         </div>
-                        <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{plataformaController.prepareCreate}" update=":PlataformaCreateForm" oncomplete="PF('PlataformaCreateDialog').show()"/>
-                        <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PlataformaViewForm" oncomplete="PF('PlataformaViewDialog').show()" disabled="#{empty plataformaController.selected}"/>
-                        <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PlataformaEditForm" oncomplete="PF('PlataformaEditDialog').show()" disabled="#{empty plataformaController.selected}"/>
-                        <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{plataformaController.destroy}" update=":growl,datalist" disabled="#{empty plataformaController.selected}"/>
-                        <div name="header-right" class="header-right" >
-                            <p:commandButton id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                        <p:commandButton styleClass="button color-darcula" id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{plataformaController.prepareCreate}" update=":PlataformaCreateForm" oncomplete="PF('PlataformaCreateDialog').show()"/>
+                        <p:commandButton styleClass="button color-darcula" id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":PlataformaViewForm" oncomplete="PF('PlataformaViewDialog').show()" disabled="#{empty plataformaController.selected}"/>
+                        <p:commandButton styleClass="button color-darcula" id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":PlataformaEditForm" oncomplete="PF('PlataformaEditDialog').show()" disabled="#{empty plataformaController.selected}"/>
+                        <p:commandButton styleClass="button color-darcula" id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{plataformaController.destroy}" update=":growl,datalist" disabled="#{empty plataformaController.selected}"/>
+                        <div class="place-right">
+                            <div style="margin-right:30px; display: inline;">
+                                <ul class="t-menu horizontal compact darcula">
+                                    <li><h:commandLink>
+                                            <span class="mif-file-excel"></span>
+                                            <p:dataExporter type="xls" target="datalist" fileName="plataformas"/>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink>
+                                            <span class="mif-file-text"></span>
+                                            <p:dataExporter type="csv" target="datalist" fileName="plataformas"/>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink>
+                                            <span class="mif-file-pdf"></span>
+                                            <p:dataExporter type="pdf" target="datalist" fileName="plataformas"/>
+                                        </h:commandLink></li>
+                                    <li><h:commandLink>
+                                            <span class="mif-file-code"></span>
+                                            <p:dataExporter type="xml" target="datalist" fileName="plataformas"/>
+                                        </h:commandLink></li>    
+                                </ul>
+                            </div>
+                            <p:commandButton styleClass="button color-darcula" id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
                             <p:columnToggler datasource="datalist" trigger="toggler" />
                         </div>
                     </f:facet>

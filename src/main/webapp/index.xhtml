@@ -1,41 +1,22 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <f:view contentType="text/html">
-        <h:head>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-            <h:outputStylesheet name="css/jsfcrud.css"/>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>#{bundle.AppName}</title>
-            </f:facet>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"/>
-        </h:head>
-        <h:body>
-            <p:layout fullPage="true">
-                <p:layoutUnit position="north" styleClass="layoutEncabezado">
-                    <div class="encabezado">
-                        <i class="fa fa-gamepad elementoEncabezado" aria-hidden="true"></i>
-                        <h:outputText class="elementoEncabezado" value="#{bundle.AppName}"></h:outputText>
-                        <h:outputText class="elementoEncabezadoIzq" value="#{bundle.MenuPrincipal}"></h:outputText>
-                    </div>
-                </p:layoutUnit>
-                <p:layoutUnit position="center" styleClass="layoutContenido" >
-                    <div class="contenido">
-                        <ui:repeat value="${menuController.menu}" var="item">
-                            <div class = "marcoFoto zoom">
-                                <h:link outcome="${item.link}">
-                                    <img src="${item.imagen}"/>
-                                    <h:outputText value="${item.nombre}"></h:outputText>
-                                </h:link>
-                            </div>
-                        </ui:repeat>
-                    </div>
-                </p:layoutUnit>
-            </p:layout>
-        </h:body>
-    </f:view>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="body">
+            <ui:repeat value="${menuController.menu}" var="item">
+                <div class = "marcoFoto zoom">
+                    <h:link outcome="${item.outcome}">
+                        <img src="${item.imagen}"/>
+                        <div style="margin:8px;"><h:outputText value="${item.nombre}" style="color: white;"></h:outputText></div>
+                    </h:link>
+                </div>
+            </ui:repeat>
+        </ui:define>
+    </ui:composition>
+
 </html>
 

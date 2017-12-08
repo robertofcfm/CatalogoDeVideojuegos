@@ -27,15 +27,15 @@ public class MenuController {
     public MenuController() {
         menu = new ArrayList();
         
-        menu.add(new Menu("JSF-Pages/videojuego/List", "resources/imagenes/menu/Videojuego.jpg", "Videojuegos"));
-        menu.add(new Menu("JSF-Pages/saga/List", "resources/imagenes/menu/Saga.jpg", "Saga"));
-        menu.add(new Menu("JSF-Pages/etiqueta/List", "resources/imagenes/menu/Etiqueta.jpg", "Etiquetas"));
-        menu.add(new Menu("JSF-Pages/grupoetiqueta/List", "resources/imagenes/menu/GrupoEtiqueta.jpg", "Grupo de etiquetas"));
-        menu.add(new Menu("JSF-Pages/division/List", "resources/imagenes/menu/Division.jpg", "Division"));       
-        menu.add(new Menu("JSF-Pages/compania/List", "resources/imagenes/menu/Compania.png", "Compañía"));
-        menu.add(new Menu("JSF-Pages/ubicacion/List", "resources/imagenes/menu/Ubicacion.png", "Ubicación"));
-        menu.add(new Menu("JSF-Pages/plataforma/List", "resources/imagenes/menu/Plataforma.png", "Plataforma"));
-        menu.add(new Menu("JSF-Pages/estado/List", "resources/imagenes/menu/Estado.png", "Estado"));
+        menu.add(new Menu("Videojuego", "Videojuego", "resources/imagenes/menu/Videojuego.jpg"));
+        menu.add(new Menu("Saga", "Saga", "resources/imagenes/menu/Saga.jpg"));
+        menu.add(new Menu("Etiqueta", "Etiqueta", "resources/imagenes/menu/Etiqueta.jpg"));
+        menu.add(new Menu("GrupoDeEtiquetas", "Grupo/Etiquetas", "resources/imagenes/menu/GrupoEtiqueta.jpg"));
+        menu.add(new Menu("Division", "Division", "resources/imagenes/menu/Division.jpg"));       
+        menu.add(new Menu("Compañía", "Compañía", "resources/imagenes/menu/Compania.png"));
+        menu.add(new Menu("Ubicación", "Ubicación", "resources/imagenes/menu/Ubicacion.png"));
+        menu.add(new Menu("Plataforma", "Plataforma", "resources/imagenes/menu/Plataforma.png"));
+        menu.add(new Menu("Estado", "Estado", "resources/imagenes/menu/Estado.png"));
     
     }
     public List<Menu> getMenu() {
