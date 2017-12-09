@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition>
 
@@ -15,7 +16,7 @@
                         <p:outputLabel value="#{bundle.CreateDivisionLabel_idDivision}" for="idDivision" rendered="false"/>
                         <p:inputText id="idDivision" value="#{divisionController.selected.idDivision}" title="#{bundle.CreateDivisionTitle_idDivision}" required="true" requiredMessage="#{bundle.CreateDivisionRequiredMessage_idDivision}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateDivisionLabel_division}" for="division" />
-                        <p:inputText id="division" value="#{divisionController.selected.division}" title="#{bundle.CreateDivisionTitle_division}" required="true" requiredMessage="#{bundle.CreateDivisionRequiredMessage_division}"/>
+                        <input jsf:id="division" type="text" class="input-control text inputDialog" jsf:value="#{divisionController.selected.division}" data-required="true" jsf:requiredMessage="#{bundle.CreateUbicacionRequiredMessage_Ubicacion}" autofocus="autofocus"/>
                         <p:outputLabel value="#{bundle.CreateDivisionLabel_companiaidDivision}" for="companiaidDivision" />
                         <p:selectOneMenu id="companiaidDivision" value="#{divisionController.selected.companiaidDivision}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -25,7 +26,7 @@
                                            itemValue="#{companiaidDivisionItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{divisionController.create}" value="#{bundle.Save}" update="display,:DivisionListForm:datalist,:growl" oncomplete="handleSubmit(args,'DivisionCreateDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{divisionController.create}" value="#{bundle.Save}" update="display,:DivisionListForm:datalist,:growl" oncomplete="handleSubmit(args,'DivisionCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="DivisionCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>

@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition>
 
@@ -15,9 +16,9 @@
                         <p:outputLabel value="#{bundle.CreateGrupoetiquetaLabel_idGrupoEtiqueta}" for="idGrupoEtiqueta" rendered="false"/>
                         <p:inputText id="idGrupoEtiqueta" value="#{grupoetiquetaController.selected.idGrupoEtiqueta}" title="#{bundle.CreateGrupoetiquetaTitle_idGrupoEtiqueta}" required="true" requiredMessage="#{bundle.CreateGrupoetiquetaRequiredMessage_idGrupoEtiqueta}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateGrupoetiquetaLabel_grupoEtiqueta}" for="grupoEtiqueta" />
-                        <p:inputText id="grupoEtiqueta" value="#{grupoetiquetaController.selected.grupoEtiqueta}" title="#{bundle.CreateGrupoetiquetaTitle_grupoEtiqueta}" required="true" requiredMessage="#{bundle.CreateGrupoetiquetaRequiredMessage_grupoEtiqueta}"/>
-                    </p:panelGrid>
-                    <p:commandButton actionListener="#{grupoetiquetaController.create}" value="#{bundle.Save}" update="display,:GrupoetiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'GrupoetiquetaCreateDialog');"/>
+                        <input jsf:id="grupoEtiqueta" type="text" class="input-control text inputDialog" jsf:value="#{grupoetiquetaController.selected.grupoEtiqueta}" data-required="true" jsf:requiredMessage="#{bundle.CreateGrupoetiquetaRequiredMessage_grupoEtiqueta}" autofocus="autofocus"/>
+                     </p:panelGrid>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{grupoetiquetaController.create}" value="#{bundle.Save}" update="display,:GrupoetiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'GrupoetiquetaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="GrupoetiquetaCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>

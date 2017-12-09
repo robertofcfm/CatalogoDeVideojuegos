@@ -19924,6 +19924,18 @@ a.ui-paginator-next.ui-state-default.ui-corner-all > span,
 a.ui-paginator-last.ui-state-default.ui-corner-all > span {
   height: 0;
 }
+div.ui-selectonemenu-trigger:after {
+  font-family: FontAwesome;
+  content: "\f0d7";
+}
+a.ui-spinner-button.ui-spinner-down:after {
+  font-family: FontAwesome;
+  content: "\f078";
+}
+a.ui-spinner-button.ui-spinner-up:after {
+  font-family: FontAwesome;
+  content: "\f077";
+}
 .ui-chkbox-box.ui-widget.ui-corner-all.ui-state-default:before {
   position: absolute;
   font-family: FontAwesome;
@@ -19947,7 +19959,6 @@ a.ui-paginator-last:after {
 }
 /*iconos fin*/
 .ui-state-active,
-.ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active,
 a.ui-button:active,
 .ui-button:active,
@@ -19957,19 +19968,18 @@ a.ui-button:active,
 }
 /*elemento seleccionado en tabla, o lista*/
 .ui-state-highlight,
-.ui-widget-content .ui-state-highlight,
+.ui-selectonemenu-items,
+div.ui-selectonemenu-items-wrapper,
 .ui-widget-header .ui-state-highlight,
 .ui-columntoggler-item:active {
   background-color: #3c3f41!important;
   color: #ffffff!important;
 }
 /*hover de tabla y elementos de combos y listas*/
-.ui-state-hover,
-.ui-widget-content .ui-state-hover,
-.ui-widget-header .ui-state-hover,
-.ui-state-focus,
-.ui-widget-content .ui-state-focus,
-.ui-widget-header .ui-state-focus .ui-button:hover,
+.ui-datatable tbody tr:hover,
+.ui-selectonemenu-item:hover,
+.ui-datatable-odd:hover,
+.ui-datatable-even:hover,
 .ui-button:focus {
   background-color: #1d1d1d!important;
   color: #ffffff!important;
@@ -20024,7 +20034,6 @@ a.ui-button:focus,
   /*IE9 */
 }
 .ui-state-disabled,
-.ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
   opacity: .35;
   filter: alpha(opacity=35);
@@ -20051,5 +20060,22 @@ a.ui-button:focus,
 .ui-panelgrid td,
 .ui-panelgrid tr {
   border: none!important;
+}
+.ui-selectonemenu {
+  border: 1px solid black!important;
+}
+.ui-widget-overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.inputDialog,
+.ui-selectonemenu {
+  width: 400px!important;
+}
+.ui-inputfield {
+  width: 400px;
+}
+.ui-spinner,
+.ui-spinner-input {
+  width: 75px;
 }
 /*# sourceMappingURL=estiloPrincipal.css.map */

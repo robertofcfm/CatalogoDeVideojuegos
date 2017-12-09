@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition>
 
@@ -15,9 +16,9 @@
                         <p:outputLabel value="#{bundle.CreateCompaniaLabel_idCompania}" for="idCompania" rendered="false"/>
                         <p:inputText id="idCompania" value="#{companiaController.selected.idCompania}" title="#{bundle.CreateCompaniaTitle_idCompania}" required="true" requiredMessage="#{bundle.CreateCompaniaRequiredMessage_idCompania}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateCompaniaLabel_compania}" for="compania" />
-                        <p:inputText id="compania" value="#{companiaController.selected.compania}" title="#{bundle.CreateCompaniaTitle_compania}" required="true" requiredMessage="#{bundle.CreateCompaniaRequiredMessage_compania}"/>
+                        <input jsf:id="compania" type="text" class="input-control text inputDialog" jsf:value="#{companiaController.selected.compania}" data-required="true" jsf:requiredMessage="#{bundle.CreateCompaniaRequiredMessage_compania}" autofocus="autofocus"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{companiaController.create}" value="#{bundle.Save}" update="display,:CompaniaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CompaniaCreateDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{companiaController.create}" value="#{bundle.Save}" update="display,:CompaniaListForm:datalist,:growl" oncomplete="handleSubmit(args,'CompaniaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="CompaniaCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>

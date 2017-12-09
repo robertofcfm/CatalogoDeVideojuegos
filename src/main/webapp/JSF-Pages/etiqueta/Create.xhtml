@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition>
 
@@ -15,9 +16,9 @@
                         <p:outputLabel value="#{bundle.CreateEtiquetaLabel_idEtiqueta}" for="idEtiqueta" rendered="false"/>
                         <p:inputText id="idEtiqueta" value="#{etiquetaController.selected.idEtiqueta}" title="#{bundle.CreateEtiquetaTitle_idEtiqueta}" required="true" requiredMessage="#{bundle.CreateEtiquetaRequiredMessage_idEtiqueta}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateEtiquetaLabel_etiqueta}" for="etiqueta" />
-                        <p:inputText id="etiqueta" value="#{etiquetaController.selected.etiqueta}" title="#{bundle.CreateEtiquetaTitle_etiqueta}" required="true" requiredMessage="#{bundle.CreateEtiquetaRequiredMessage_etiqueta}"/>
+                        <input jsf:id="etiqueta" type="text" class="input-control text inputDialog" jsf:value="#{etiquetaController.selected.etiqueta}" data-required="true" jsf:requiredMessage="#{bundle.CreateEtiquetaRequiredMessage_etiqueta}" autofocus="autofocus"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{etiquetaController.create}" value="#{bundle.Save}" update="display,:EtiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtiquetaCreateDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{etiquetaController.create}" value="#{bundle.Save}" update="display,:EtiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EtiquetaCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EtiquetaCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>

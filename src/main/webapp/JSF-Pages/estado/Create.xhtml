@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition>
 
@@ -15,9 +16,10 @@
                         <p:outputLabel value="#{bundle.CreateEstadoLabel_idEstado}" for="idEstado" rendered="false"/>
                         <p:inputText id="idEstado" value="#{estadoController.selected.idEstado}" title="#{bundle.CreateEstadoTitle_idEstado}" required="true" requiredMessage="#{bundle.CreateEstadoRequiredMessage_idEstado}" rendered="false"/>
                         <p:outputLabel value="#{bundle.CreateEstadoLabel_estado}" for="estado" />
-                        <p:inputText id="estado" value="#{estadoController.selected.estado}" title="#{bundle.CreateEstadoTitle_estado}" required="true" requiredMessage="#{bundle.CreateEstadoRequiredMessage_estado}"/>
+                        <input jsf:id="estado" type="text" class="input-control text inputDialog" jsf:value="#{estadoController.selected.estado}" data-required="true" jsf:requiredMessage="#{bundle.CreateEstadoRequiredMessage_estado}" autofocus="autofocus"/>
+                        <!--<p:inputText id="estado" styleClass="input-control text" value="#{estadoController.selected.estado}" title="#{bundle.CreateEstadoTitle_estado}" required="true" requiredMessage="#{bundle.CreateEstadoRequiredMessage_estado}"/>-->
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{estadoController.create}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadoCreateDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{estadoController.create}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'EstadoCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EstadoCreateDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
