@@ -24,18 +24,23 @@
         <link jsf:name="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link jsf:name="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <link jsf:name="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link jsf:name="css/jsfcrud.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
         
         <link jsf:name="css/estiloPrincipal.css" rel="stylesheet" type="text/css"/>
         <script jsf:target="body" jsf:name="metro.min.js" src="http://cdn.metroui.org.ua/js/metro.min.js"/>
         <script jsf:target="body" jsf:name="jquery-ui.js"/>
         <script jsf:target="body" jsf:name="jquery.dataTables.min.js"/>
+        <script jsf:target="body" jsf:name="jsfcrud.js"/>
+        
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputScript library="js" name="jsfcrud.js"/>
     </head>
 
     <body jsf:id="body">
 
         <p:growl id="growl" life="3000" />
-
+        
         <div class="app-bar fixed-top #{estiloController.appBarColor}" data-role="appbar">
             <h:link outcome="Inicio" styleClass="app-bar-element branding">#{bundle.AppName}</h:link>
             <span class="app-bar-divider"></span>
