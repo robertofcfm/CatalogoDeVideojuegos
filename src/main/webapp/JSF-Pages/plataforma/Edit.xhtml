@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition>
 
@@ -15,7 +16,7 @@
                         <p:outputLabel value="#{bundle.EditPlataformaLabel_idPlataforma}" for="idPlataforma" rendered="false"/>
                         <p:inputText id="idPlataforma" value="#{plataformaController.selected.idPlataforma}" title="#{bundle.EditPlataformaTitle_idPlataforma}" required="true" requiredMessage="#{bundle.EditPlataformaRequiredMessage_idPlataforma}" rendered="false"/>
                         <p:outputLabel value="#{bundle.EditPlataformaLabel_plataforma}" for="plataforma" />
-                        <p:inputText id="plataforma" value="#{plataformaController.selected.plataforma}" title="#{bundle.EditPlataformaTitle_plataforma}" required="true" requiredMessage="#{bundle.EditPlataformaRequiredMessage_plataforma}"/>
+                        <input jsf:id="plataforma" type="text" class="input-control text inputDialog" jsf:value="#{plataformaController.selected.plataforma}" data-required="true" jsf:requiredMessage="#{bundle.CreatePlataformaRequiredMessage_plataforma}" autofocus="autofocus"/>
                         <p:outputLabel value="#{bundle.EditPlataformaLabel_companiaidCompania}" for="companiaidCompania" />
                         <p:selectOneMenu id="companiaidCompania" value="#{plataformaController.selected.companiaidCompania}" >
                             <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
@@ -25,7 +26,7 @@
                                            itemValue="#{companiaidCompaniaItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{plataformaController.update}" value="#{bundle.Save}" update="display,:PlataformaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PlataformaEditDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{plataformaController.update}" value="#{bundle.Save}" update="display,:PlataformaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PlataformaEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="PlataformaEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>

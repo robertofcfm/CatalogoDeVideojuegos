@@ -75,7 +75,7 @@
                             </p:selectManyMenu>
                         </p:panelGrid>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{videojuegoController.update}" value="#{bundle.Save}" update="display,:VideojuegoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'VideojuegoEditDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{videojuegoController.update}" value="#{bundle.Save}" update="display,:VideojuegoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'VideojuegoEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="VideojuegoEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>

@@ -26,7 +26,7 @@
                                            itemValue="#{grupoetiquetaItem}" />
                         </p:selectManyMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{etiquetaController.update}" value="#{bundle.Save}" update="display,:EtiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EtiquetaEditDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{etiquetaController.update}" value="#{bundle.Save}" update="display,:EtiquetaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EtiquetaEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EtiquetaEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>

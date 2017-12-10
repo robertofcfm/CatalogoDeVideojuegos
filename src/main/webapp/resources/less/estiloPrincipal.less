@@ -38,6 +38,13 @@ a.ui-paginator-next.ui-state-default.ui-corner-all > span,
 a.ui-paginator-last.ui-state-default.ui-corner-all > span{
     height: 0;
 }
+div.ui-selectlistbox-filter-container:after{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-family: FontAwesome;
+    content: "\f002"; //Code FA  
+}
 
 div.ui-selectonemenu-trigger:after{
     font-family: FontAwesome;
@@ -54,7 +61,7 @@ a.ui-spinner-button.ui-spinner-up:after{
     content: "\f077"; //Code FA 
 }
 
-.ui-chkbox-box.ui-widget.ui-corner-all.ui-state-default:before{
+.ui-chkbox-box.ui-widget.ui-corner-all.ui-state-active:before{
     position: absolute;
     font-family: FontAwesome;
     content: "\f00c"; //Code FA 
@@ -155,7 +162,6 @@ a.ui-button:focus,
 }
 
 .ui-state-disabled,
-/*.ui-widget-content .ui-state-disabled,*/
 .ui-widget-header .ui-state-disabled {
     opacity: .35;
     filter: alpha(opacity=35);
@@ -169,6 +175,7 @@ a.ui-button:focus,
 
 .ui-dialog-content{
     .color-text-darcula;
+    overflow: hidden !important;
 } 
 
 .ui-dialog-titlebar-icon:before {
@@ -185,6 +192,7 @@ a.ui-button:focus,
     border:none!important;
 }
 
+.ui-selectmanymenu,
 .ui-selectonemenu{
     border: 1px solid black!important;
 }
@@ -194,8 +202,13 @@ a.ui-button:focus,
 }
 
 .inputDialog,
+.ui-selectmanymenu,
 .ui-selectonemenu{
     width: 400px!important;
+}
+
+.ui-selectmanymenu .ui-inputfield{
+    width: 100%!important;
 }
 
 .ui-inputfield{

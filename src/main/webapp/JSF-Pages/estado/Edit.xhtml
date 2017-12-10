@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
     <ui:composition>
 
@@ -15,9 +16,9 @@
                         <p:outputLabel value="#{bundle.EditEstadoLabel_idEstado}" for="idEstado" rendered="false"/>
                         <p:inputText id="idEstado" value="#{estadoController.selected.idEstado}" title="#{bundle.EditEstadoTitle_idEstado}" required="true" requiredMessage="#{bundle.EditEstadoRequiredMessage_idEstado}" rendered="false"/>
                         <p:outputLabel value="#{bundle.EditEstadoLabel_estado}" for="estado" />
-                        <p:inputText id="estado" value="#{estadoController.selected.estado}" title="#{bundle.EditEstadoTitle_estado}" required="true" requiredMessage="#{bundle.EditEstadoRequiredMessage_estado}"/>
+                        <input jsf:id="estado" type="text" class="input-control text inputDialog" jsf:value="#{estadoController.selected.estado}" data-required="true" jsf:requiredMessage="#{bundle.CreateEstadoRequiredMessage_estado}" autofocus="autofocus"/>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{estadoController.update}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstadoEditDialog');"/>
+                    <p:commandButton styleClass="button color-darcula" actionListener="#{estadoController.update}" value="#{bundle.Save}" update="display,:EstadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'EstadoEditDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="EstadoEditDialog.hide()" rendered="false"/>
                 </h:panelGroup>
             </h:form>
