@@ -51,14 +51,19 @@ div.ui-selectonemenu-trigger:after{
     content: "\f0d7"; //Code FA 
 }
 
-a.ui-spinner-button.ui-spinner-down:after{
+a.ui-spinner-button.ui-spinner-down:before{
     font-family: FontAwesome;
     content: "\f078"; //Code FA 
 }
 
-a.ui-spinner-button.ui-spinner-up:after{
+a.ui-spinner-button.ui-spinner-up:before{
     font-family: FontAwesome;
     content: "\f077"; //Code FA 
+}
+
+a.ui-spinner-button.ui-spinner-down,
+a.ui-spinner-button.ui-spinner-up{
+    margin-top: 0px!important;
 }
 
 .ui-chkbox-box.ui-widget.ui-corner-all.ui-state-active:before{

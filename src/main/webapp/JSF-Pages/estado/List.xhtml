@@ -46,15 +46,15 @@
                     </p:column>
                     <f:facet name="footer">
                         <div class="place-left">
-                            <div class="input-control text" data-role="input">
+                            <div class="input-control text" data-role="input" style="margin: 0px!important;">
                                 <input jsf:id="globalFilter" type="text" jsf:onkeyup="PF('tabla').filter()"/>
                                 <button class="button" disabled="true"><span class="mif-filter"></span></button>
                             </div>
                         </div>
-                        <p:commandButton styleClass="button color-darcula" id="createButton" icon="fa fa-plus" value="#{bundle.Create}" actionListener="#{estadoController.prepareCreate}" update=":EstadoCreateForm" oncomplete="PF('EstadoCreateDialog').show()"/>
-                        <p:commandButton styleClass="button color-darcula" id="viewButton"   icon="fa fa-search" value="#{bundle.View}" update=":EstadoViewForm" oncomplete="PF('EstadoViewDialog').show()" disabled="#{empty estadoController.selected}"/>
-                        <p:commandButton styleClass="button color-darcula" id="editButton"   icon="fa fa-pencil" value="#{bundle.Edit}" update=":EstadoEditForm" oncomplete="PF('EstadoEditDialog').show()" disabled="#{empty estadoController.selected}"/>
-                        <p:commandButton styleClass="button color-darcula" id="deleteButton" icon="fa fa-trash"  value="#{bundle.Delete}" actionListener="#{estadoController.destroy}" update=":growl,datalist" disabled="#{empty estadoController.selected}"/>
+                        <p:commandButton styleClass="button color-darcula" style="margin: 0px!important;" id="createButton" icon="fa fa-plus" value="#{bundle.Create}" actionListener="#{estadoController.prepareCreate}" update=":EstadoCreateForm" oncomplete="PF('EstadoCreateDialog').show()"/>
+                        <p:commandButton styleClass="button color-darcula" style="margin: 0px!important;" id="viewButton"   icon="fa fa-search" value="#{bundle.View}" update=":EstadoViewForm" oncomplete="PF('EstadoViewDialog').show()" disabled="#{empty estadoController.selected}"/>
+                        <p:commandButton styleClass="button color-darcula" style="margin: 0px!important;" id="editButton"   icon="fa fa-pencil" value="#{bundle.Edit}" update=":EstadoEditForm" oncomplete="PF('EstadoEditDialog').show()" disabled="#{empty estadoController.selected}"/>
+                        <p:commandButton styleClass="button color-darcula" style="margin: 0px!important;" id="deleteButton" icon="fa fa-trash"  value="#{bundle.Delete}" actionListener="#{estadoController.destroy}" update=":growl,datalist" disabled="#{empty estadoController.selected}"/>
                         <div class="place-right">
                             <div style="margin-right:30px; display: inline;">
                                 <ul class="t-menu horizontal compact darcula">
@@ -76,7 +76,7 @@
                                         </h:commandLink></li>    
                                 </ul>
                             </div>
-                            <p:commandButton styleClass="button color-darcula" id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
+                            <p:commandButton styleClass="button color-darcula" style="margin: 0px!important;" id="toggler" type="button" value="Columnas" icon="fa fa-columns"/>
                             <p:columnToggler datasource="datalist" trigger="toggler" />
                         </div>
                     </f:facet>
